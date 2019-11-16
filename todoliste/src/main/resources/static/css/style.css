@@ -1,0 +1,158 @@
+* {
+    margin: 5px;
+    padding: 5px;
+}
+
+/* definitions to make a sticky footer */
+html {
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+}
+
+/* definitions for thw whole page */
+body {
+    /* definitions for colors, size and spacing */
+    background: #d1fffe url("../img/.png") repeat-x top left;
+    background-size: 100% 100px;
+    color: #30486e;
+    padding: 110px 0 0;
+    margin: 0;
+    max-width: 1500px;
+
+    /* definitions to make a sticky footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+    min-height: 98vh;
+    box-sizing: border-box;
+}
+
+/* definitions to make a sticky footer */
+header, footer {
+    display: block;
+    flex-shrink: 0;
+}
+
+/* definitions to make a sticky footer */
+main {
+    display: block;
+    flex-grow: 1
+}
+
+/* definitions for the main title in the banner */
+.title {
+    align-content: center;
+    vertical-align: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    padding: 5px;
+    margin: 0;
+    background: rgba(250, 250, 250, 0.6);
+}
+
+/* makes the input fields come in the same space after the label */
+label {
+    width: 100px;
+    display: inline-block;
+}
+
+/* makes the input fields come in the same space after the label */
+input[type="text"], input[type="password"] {
+    width: 200px;
+}
+
+/* makes the input fields come in the same space after the label */
+input[type="number"] {
+    width: 60px;
+}
+
+/* makes the input fields come in the same space after the label */
+select {
+    width: 210px;
+    margin-left: 1px;
+}
+
+/* defines the special width for zip input */
+#zip {
+    width: 55px;
+}
+
+/* defines the special width for city input */
+#city {
+    width: 125px;
+}
+
+/* defines the box for not the same password (for js) */
+.wrong {
+    color: darkred;
+    font-weight: bold;
+    margin-left: 120px;
+}
+
+/* defines the box for not the same password (for js) */
+.hidden {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+/* defines div containers */
+div {
+    display: inline;
+    margin: 5px 0;
+}
+
+/* set the title bar of each table */
+th {
+    text-align: left;
+    border-bottom: #6d7993 solid 1px;
+}
+
+/* set the body of each table */
+td {
+    min-width: 100px;
+}
+
+/* defines the design of links */
+a {
+    font-size: 20pt;
+    color: white;
+    text-decoration: none;
+}
+
+.back {
+    color: #6d7993;
+}
+
+/* defines the navigation list box */
+dl {
+    display: flex;
+    flex-direction: row;
+    min-width: 500px;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+    background: #3e857f;
+    padding: 0;
+    color: white;
+}
+
+/* defines the navigation list items */
+dd {
+    padding: 10px;
+    margin: 0;
+}
+
+/* defines the navigation item marked */
+dd:hover, dd:active, .active {
+    font-weight: bold;
+    background: #7c68e2;
+}
