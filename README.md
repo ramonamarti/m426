@@ -1,8 +1,8 @@
 # m426
 Fancy To Do Liste
 
-Chef -> Ramona Marti
-Cristina Vantaggiato
-Carlos Sampaio Peredo
-Michael Zihlmann
-Kevin Meier
+Chef -> Ramona Marti <br/>
+Cristina Vantaggiato <br/>
+Carlos Sampaio Peredo <br/>
+Michael Zihlmann <br/>
+Kevin Meier <br/>
