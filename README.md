@@ -1,7 +1,6 @@
 # m426
+<span style="color:blue"><em>Fancy To Do Liste </em></span><br/>
 
-
-<span style="color:blue">*Fancy To Do Liste*</span><br/>
 Chef -> Ramona Marti <br/>
 Cristina Vantaggiato <br/>
 Carlos Sampaio Peredo <br/>
