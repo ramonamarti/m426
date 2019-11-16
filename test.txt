@@ -1,5 +1,0 @@
-Hallo WISS Schüler
-
-Ich habe ein Commit gemacht!
-
-Wo ist das Projekt?
