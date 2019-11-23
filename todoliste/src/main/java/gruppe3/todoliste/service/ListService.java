@@ -1,7 +1,8 @@
 package gruppe3.todoliste.service;
 
+import gruppe3.todoliste.model.List;
 import org.springframework.stereotype.Service;
-//import gruppe3.todoliste.repos.ListRespository;
+import gruppe3.todoliste.repos.ListRespository;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -11,19 +12,19 @@ import java.util.Optional;
  */
 @Service
 public class ListService {
-//    private final ListRespository listRespository;
-//
-//    public ListService(ListRespository listRespository) {
-//        this.listRespository = listRespository;
-//    }
+    private final ListRespository listRespository;
+
+    public ListService(ListRespository listRespository) {
+        this.listRespository = listRespository;
+    }
 
 //    /**
 //     * to add and save a module in the table module
-//     * @param m: module to save
+//     * @param l: module to save
 //     * @return id of the entry
 //     */
-//    public Long addModule(@Valid Module m){
-//        return moduleRespository.saveAndFlush(m).getId();
+//    public Long addList(@Valid List l){
+//        return listRespository.saveAndFlush(l).getId();
 //    }
 //
 //    /**
@@ -31,12 +32,12 @@ public class ListService {
 //     * @param id: id of a module
 //     * @return module with the correct id from the table module
 //     */
-//    public Module getModule(Long id){
-//        Module module = new Module();
+//    public List getList(Long id){
+//        List module = new List();
 //        if(id != null){
-//            Optional<Module> optionalModule = moduleRespository.findById(id);
-//            if(optionalModule.isPresent())
-//                module = optionalModule.get();
+//            Optional<List> optionalList = listRespository.findById(id);
+//            if(optionalList.isPresent())
+//                module = optionalList.get();
 //        }
 //        return module;
 //    }
@@ -45,11 +46,11 @@ public class ListService {
 //     * to delete a module from the table module
 //     * @param id: id of a module
 //     */
-//    public void removeModule(Long id){
+//    public void removeList(Long id){
 //        if(id != null){
-//            Optional<Module> optionalModule = moduleRespository.findById(id);
-//            if(optionalModule.isPresent())
-//                moduleRespository.deleteById(Math.toIntExact(id));
+//            Optional<List> optionalList = listRespository.findById(id);
+//            if(optionalList.isPresent())
+//                listRespository.deleteById(Math.toIntExact(id));
 //        }
 //    }
 }
