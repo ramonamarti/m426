@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
  * id
  * vorname
  * nachname
+ * and represent the object entity
  */
 @Entity(name = "person")
 @Table(name = "person")
