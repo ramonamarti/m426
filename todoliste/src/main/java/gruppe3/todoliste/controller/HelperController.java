@@ -8,10 +8,7 @@ import gruppe3.todoliste.service.LoginService;
 import gruppe3.todoliste.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -51,6 +48,7 @@ public class HelperController {
 //        List<Student> students = studentService.findStudent();
 //        System.out.println(students);
 //        model.addAttribute(students);
+//        model.addAttribute("todos", listService.getList());
         return "home";
     }
 
@@ -61,6 +59,19 @@ public class HelperController {
         loginService.addLogin(login);
         model.addAttribute(login);
         return "home";
+    }
+
+  /*  @GetMapping
+    public String showForm(Model model){
+        model.addAttribute("todos", listService.getAllList());
+        return "home";
+    }*/
+
+    @GetMapping(value = "/delete", params ={"id"})
+    public String delete (@RequestParam(name ="id")Long id, Model model){
+        listService.deleteList(id);
+        model.addAttribute("todos", listService.getAllList());
+        return "redirect:/home";
     }
 }
 

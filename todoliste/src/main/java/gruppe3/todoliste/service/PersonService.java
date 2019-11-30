@@ -76,6 +76,7 @@ public class PersonService {
      */
     // not used jet
     public List<Person> findStudent(){
+
         return personRepository.findAll();
     }
 }
