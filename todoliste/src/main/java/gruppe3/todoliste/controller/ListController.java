@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/todo")
 public class ListController {
 
-    @Autowired
-    private ListService listService;
+    private final ListService listService;
+
+    public ListController(ListService listService) {
+        this.listService = listService;
+    }
 
     /**
      *
@@ -40,5 +43,11 @@ public class ListController {
         return "todoForm";
     }
 
+    @GetMapping(value = "/delete", params ={"id"})
+    public String delete (@RequestParam(name ="id")Long id, Model model){
+        listService.deleteList(id);
+        model.addAttribute("todos", listService.getAllList());
+        return "redirect:/home";
+    }
 
 }
