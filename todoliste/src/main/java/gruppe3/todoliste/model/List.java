@@ -13,8 +13,8 @@ import javax.validation.constraints.NotNull;
  * personFk
  * Author: Cristina
  */
-@Entity(name = "login")
-@Table(name = "login")
+@Entity(name = "list")
+@Table(name = "list")
 public class List {
 
     @Id
