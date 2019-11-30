@@ -8,7 +8,8 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 /***
- * service to add a module, get a module with its id or remove a module
+ * dashboard to show all entries
+ * Author: Michi
  */
 @Service
 public class ListService {
@@ -19,8 +20,8 @@ public class ListService {
     }
 
     /**
-     * to add and save a module in the table module
-     * @param l: module to save
+     * to add and save a entry
+     * @param l: entry to save
      * @return id of the entry
      */
     public Long addList(@Valid List l){
@@ -28,9 +29,9 @@ public class ListService {
     }
 
     /**
-     * to get a module form the table module with a id
-     * @param id: id of a module
-     * @return module with the correct id from the table module
+     * get a entry with a id
+     * @param id: id of a entry
+     * @return entry with the correct id
      */
     public List getList(Long id){
         List module = new List();
@@ -44,8 +45,8 @@ public class ListService {
     }
 
     /**
-     * to delete a module from the table module
-     * @param id: id of a module
+     * to delete a entry
+     * @param id: id of a entry
      */
     public void removeList(Long id){
         if(id != null){
