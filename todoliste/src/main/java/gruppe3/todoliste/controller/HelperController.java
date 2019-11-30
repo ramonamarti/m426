@@ -1,5 +1,6 @@
 package gruppe3.todoliste.controller;
 
+import gruppe3.todoliste.model.List;
 import gruppe3.todoliste.model.Login;
 import gruppe3.todoliste.model.Person;
 import gruppe3.todoliste.service.ListService;
@@ -7,10 +8,7 @@ import gruppe3.todoliste.service.LoginService;
 import gruppe3.todoliste.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;

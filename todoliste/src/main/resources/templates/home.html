@@ -46,6 +46,36 @@
 <!--                                                       th:field="*{familyname}" required/><br/>-->
 <!--        <input type="submit" id="reg" value="Registrieren"/>-->
 <!--    </form>-->
+
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link"  href="http://localhost:8080/todo">ToDo Eintrag erstellen</a></li>
+
+
+    </ul>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr >
+
+            <th>Datum</th>
+            <th>Beschreibung</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="todo : ${todos}" >
+
+            <td type="date" data-date="" data-date-format="DD MMMM YYYY" th:text="${#dates.format(todo.date, 'dd-MM-yyy')}"></td>
+            <td th:text="${todo.description}"></td>
+
+
+            <td><a th:href="@{'/home/delete?id='+${todo.id}}"><i class="material-icons">delete</i></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+
 </main>
 
 <div th:replace="/fragments :: footer"></div>

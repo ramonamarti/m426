@@ -1,6 +1,7 @@
 package gruppe3.todoliste.service;
 
 import gruppe3.todoliste.model.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import gruppe3.todoliste.repos.ListRepository;
 
@@ -8,19 +9,21 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 /***
- * service to add a module, get a module with its id or remove a module
- */
+ * dashboard to show all entries
+ *
+ * */
 @Service
 public class ListService {
-    private final ListRepository listRepository;
+    @Autowired
+    private ListRepository listRepository;
 
     public ListService(ListRepository listRepository) {
         this.listRepository = listRepository;
     }
 
     /**
-     * to add and save a module in the table module
-     * @param l: module to save
+     * to add and save a entry to table list
+     * @param l: entry to save to table list
      * @return id of the entry
      */
     public Long addList(@Valid List l){
@@ -28,9 +31,9 @@ public class ListService {
     }
 
     /**
-     * to get a module form the table module with a id
-     * @param id: id of a module
-     * @return module with the correct id from the table module
+     * get a entry with a id from table list
+     * @param id: id of a entry from table list
+     * @return entry with the correct id from table list
      */
     public List getList(Long id){
         List module = new List();
@@ -43,9 +46,16 @@ public class ListService {
 
     }
 
+    public List<List> getAllList(){
+
+
+        return listRepository.findAll();
+
+    }
+
     /**
-     * to delete a module from the table module
-     * @param id: id of a module
+     * to delete a entry from table list
+     * @param id: id of a entry from table list
      */
     public void removeList(Long id){
         if(id != null){

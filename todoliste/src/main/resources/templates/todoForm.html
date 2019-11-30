@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--
+<html xmlns:th="http://www.thymeleaf.org">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Eintragen</title>
+</head>
+<body>
+<p th:if="${log == null}">Du muss eingeloggt sein</p>
+
+<div th:if="${log}" class="container">
+
+    <p>Du bist eingeloggt</p>
+
+</div>
+
+    <hr>
+
+
+
+    <fieldset>
+        <form method="post" th:action="@{/todo/add}" th:object="${list}">
+            <h3>Neue </h3>
+         <p>Beschreibung <input type="text" th:field="*{description}" /></p>
+            <p>Date <input type="text" th:field="*{date}" /></p>
+            <p>Person ID<input type="text" th:field="*{personFk}" /></p>
+
+            <p><input type="submit" value="Senden" /> <input type="reset" value="Reset" /></p>
+        </form>
+    </fieldset>
+    <hr>
+
+
+
+</body>
+</html>
