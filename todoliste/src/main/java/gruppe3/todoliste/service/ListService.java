@@ -46,7 +46,7 @@ public class ListService {
 
     }
 
-    public List<List> getAllList(){
+    public java.util.List<List> getAllList(){
 
 
         return listRepository.findAll();
@@ -64,4 +64,11 @@ public class ListService {
                 listRepository.deleteById(Math.toIntExact(id));
         }
     }
+
+    public void deleteList(Long id){
+        List list = getList(id);
+        listRepository.delete(list);
+    }
+
+
 }
