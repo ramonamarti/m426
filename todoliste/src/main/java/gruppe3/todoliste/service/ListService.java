@@ -1,6 +1,7 @@
 package gruppe3.todoliste.service;
 
 import gruppe3.todoliste.model.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import gruppe3.todoliste.repos.ListRepository;
 
@@ -12,7 +13,8 @@ import java.util.Optional;
  */
 @Service
 public class ListService {
-    private final ListRepository listRepository;
+    @Autowired
+    private ListRepository listRepository;
 
     public ListService(ListRepository listRepository) {
         this.listRepository = listRepository;
@@ -40,6 +42,13 @@ public class ListService {
                 module = optionalList.get();
         }
         return module;
+
+    }
+
+    public List<List> getAllList(){
+
+
+        return listRepository.findAll();
 
     }
 
