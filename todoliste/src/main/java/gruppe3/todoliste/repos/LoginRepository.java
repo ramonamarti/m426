@@ -11,7 +11,8 @@ import java.util.Optional;
  * repository to find a login with the id or login name
  */
 @Repository
-public interface LoginRespository extends
+public interface LoginRepository extends
         JpaRepository<Login,Integer>, CrudRepository<Login,Integer> {
     Optional<Login> findById(Long id);
+    Optional<Login> findByUsername(String username);
 }
