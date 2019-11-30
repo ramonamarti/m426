@@ -20,8 +20,8 @@ public class ListService {
     }
 
     /**
-     * to add and save a entry
-     * @param l: entry to save
+     * to add and save a entry to table list
+     * @param l: entry to save to table list
      * @return id of the entry
      */
     public Long addList(@Valid List l){
@@ -29,9 +29,9 @@ public class ListService {
     }
 
     /**
-     * get a entry with a id
-     * @param id: id of a entry
-     * @return entry with the correct id
+     * get a entry with a id from table list
+     * @param id: id of a entry from table list
+     * @return entry with the correct id from table list
      */
     public List getList(Long id){
         List module = new List();
@@ -45,8 +45,8 @@ public class ListService {
     }
 
     /**
-     * to delete a entry
-     * @param id: id of a entry
+     * to delete a entry from table list
+     * @param id: id of a entry from table list
      */
     public void removeList(Long id){
         if(id != null){
