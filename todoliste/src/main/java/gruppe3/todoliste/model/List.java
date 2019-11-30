@@ -18,8 +18,8 @@ import javax.validation.constraints.NotNull;
 public class List {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_list")
-    @SequenceGenerator(name = "seq_list", allocationSize = 10)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_login")
+    @SequenceGenerator(name = "seq_login", allocationSize = 10)
     private Long id;
 
     @NotEmpty
