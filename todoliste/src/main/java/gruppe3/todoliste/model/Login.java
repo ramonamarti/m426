@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
  * date
  * description
  * personFk
+ * Author: Cristina
  */
 @Entity(name = "login")
 @Table(name = "login")
