@@ -46,7 +46,7 @@ public class ListService {
 
     }
 
-    public List<List> getAllList(){
+    public java.util.List<List> getAllList(){
 
 
         return listRepository.findAll();

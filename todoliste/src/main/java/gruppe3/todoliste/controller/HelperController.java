@@ -1,6 +1,5 @@
 package gruppe3.todoliste.controller;
 
-import gruppe3.todoliste.model.List;
 import gruppe3.todoliste.model.Login;
 import gruppe3.todoliste.model.Person;
 import gruppe3.todoliste.service.ListService;
@@ -58,7 +57,7 @@ public class HelperController {
 
     @PostMapping("/login-test")
     public String addPerson(Model model, @Valid @ModelAttribute Person person, @Valid @ModelAttribute Login login) {
-        List<Person> allPersons = personService.findPerson();
+        java.util.List<Person> allPersons = personService.findPerson();
         List<Login> allLogins = loginService.findLogin();
         if(!allPersons.contains(person)){
             personService.addPerson(person);
