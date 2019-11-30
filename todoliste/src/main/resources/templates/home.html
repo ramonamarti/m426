@@ -1,11 +1,12 @@
 <!-- this page is called at the beginning -->
-<!-- it shows two form, one is for the login and the second for the registration -->
+<!-- it shows two form, one is for the list2 and the second for the registration -->
 <!-- the first part will send you to the module page of the student or to a fail page -->
 <!-- the second part will send you to the page for rereading the save data -->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="de">
 <head>
     <title>Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 <body>
 <div th:replace="/fragments :: head"></div>
@@ -17,25 +18,24 @@
 <!--        <input type="submit" value="AdminData"/>-->
 <!--    </form>-->
 <!--    <form method="post" th:action="@{/todoliste/admin/module}" th:object="${person}">-->
-<!--        <input type="hidden" name="loginname" th:field="*{login}" required/>-->
+<!--        <input type="hidden" name="loginname" th:field="*{list2}" required/>-->
 <!--        <input type="hidden" name="pass" th:field="*{password}" required/>-->
 <!--        <input type="submit" value="AdminLog"/>-->
 <!--    </form>-->
 <!--</div>-->
 
-<!-- main part with the login and registration -->
+<!-- main part with the list2 and registration -->
 <main>
-<!--    <form method="post" th:action="@{/grademanager/login/module}" th:object="${student}">-->
-<!--        <label for="loginname">Username</label><input type="text" id="loginname" name="loginname" th:field="*{login}"-->
+<!--    <form method="post" th:action="@{/grademanager/list2/module}" th:object="${person}">-->
+<!--        <label for="loginname">Username</label><input type="text" id="loginname" name="loginname" th:field="*{list2}"-->
 <!--                                                      required/><br>-->
 <!--        <label for="pass">Passwort</label><input type="password" id="pass" name="pass"-->
 <!--                                                 th:field="*{password}" required/><br>-->
 <!--        <input type="submit" value="Einloggen">-->
 <!--    </form>-->
-<!--    <form method="post" th:action="@{/grademanager/student/add}" th:object="${student}">-->
+<!--    <form method="post" th:action="@{/grademanager/student/add}" th:object="${person}">-->
 <!--        <input type="hidden" th:field="*{id}"/>-->
-<!--        <input type="hidden" th:field="*{city.id}"/>-->
-<!--        <label for="login">Username</label><input type="text" id="login" name="login" th:field="*{login}" required/><br/>-->
+<!--        <label for="list2">Username</label><input type="text" id="list2" name="list2" th:field="*{list2}" required/><br/>-->
 <!--        <label for="password1">Passwort</label><input type="password" id="password1" name="password" onkeyup="same()" minlength="6" required/><br>-->
 <!--        <label for="password2">Passwort wdh.</label><input type="password" id="password2" name="password2" onkeyup="same()"-->
 <!--                                                      required/><br>-->
@@ -44,26 +44,8 @@
 <!--                                                     th:field="*{firstname}" required/><br/>-->
 <!--        <label for="familyname">Nachname</label><input type="text" id="familyname" name="familyname"-->
 <!--                                                       th:field="*{familyname}" required/><br/>-->
-<!--        <label for="street">Strasse</label><input type="text" id="street" name="street" th:field="*{street}" required/><br/>-->
-<!--        <label for="city">PLZ, Ort</label><input type="number" min="1000" max="9999" id="zip" name="zip"-->
-<!--                                                 th:field="*{city.zip}"/><input type="text" id="city" name="city"-->
-<!--                                                                                th:field="*{city.name}" required/><br/>-->
-<!--        <label for="direction">Richtung</label>-->
-<!--        <select id="direction" th:field="*{direction}">-->
-<!--            <option th:each="d : ${directionList}" th:value="${d}" th:text="${d}"></option>-->
-<!--        </select><br/>-->
-<!--        <select id="deactivated" th:field="*{deactivated}" class="hidden">-->
-<!--            <option th:each="b : ${boolList}" th:value="${b}" th:text="${b}"></option>-->
-<!--        </select><br/>-->
 <!--        <input type="submit" id="reg" value="Registrieren"/>-->
 <!--    </form>-->
-
-<!--    <div th:text="${studentList}"></div>-->
-<!--    <div th:each="s : ${studentList}" th:object="${s}">-->
-<!--        <div th:text="*{firstname}"></div>-->
-<!--        <div th:text="*{familyname}"></div>-->
-<!--        <div th:text="*{login}"></div>-->
-<!--    </div>-->
 </main>
 
 <div th:replace="/fragments :: footer"></div>

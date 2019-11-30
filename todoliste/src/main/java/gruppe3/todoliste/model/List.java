@@ -8,12 +8,13 @@ import javax.validation.constraints.NotNull;
 /**
  * Diese Klasse erstellt die Tabelle "list" mit den folgenden Attributen:
  * id
- * username
- * password
+ * date
+ * description
  * personFk
+ * Author: Cristina
  */
-@Entity(name = "list")
-@Table(name = "list")
+@Entity(name = "login")
+@Table(name = "login")
 public class List {
 
     @Id
@@ -23,19 +24,21 @@ public class List {
 
     @NotEmpty
     @NotNull
-    private String username;
+    private String date;
 
     @NotEmpty
     @NotNull
-    private String password;
+    private String description;
 
     @NotEmpty
     @NotNull
-    private Integer personFk;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "LoginPerson_Fk")
+    private Person personFk;
 
-    public List(@NotEmpty @NotNull String username, @NotEmpty @NotNull String password, @NotEmpty @NotNull Integer personFk) {
-        this.username = username;
-        this.password = password;
+    public List(@NotEmpty @NotNull String date, @NotEmpty @NotNull String description, @NotEmpty @NotNull Person personFk) {
+        this.date = date;
+        this.description = description;
         this.personFk = personFk;
     }
 
@@ -51,27 +54,27 @@ public class List {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getDate() {
+        return date;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Integer getPersonFk() {
+    public Person getPersonFk() {
         return personFk;
     }
 
-    public void setPersonFk(Integer personFk) {
+    public void setPersonFk(Person personFk) {
         this.personFk = personFk;
     }
 }
