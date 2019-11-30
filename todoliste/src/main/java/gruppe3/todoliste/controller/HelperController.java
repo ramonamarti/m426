@@ -1,5 +1,6 @@
 package gruppe3.todoliste.controller;
 
+import gruppe3.todoliste.model.List;
 import gruppe3.todoliste.model.Login;
 import gruppe3.todoliste.model.Person;
 import gruppe3.todoliste.service.ListService;

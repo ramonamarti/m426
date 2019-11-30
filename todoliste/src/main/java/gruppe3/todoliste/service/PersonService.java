@@ -2,7 +2,7 @@ package gruppe3.todoliste.service;
 
 import gruppe3.todoliste.model.Person;
 import org.springframework.stereotype.Service;
-import gruppe3.todoliste.repos.PersonRespository;
+import gruppe3.todoliste.repos.PersonRepository;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -13,19 +13,18 @@ import java.util.Optional;
  */
 @Service
 public class PersonService {
-    private final PersonRespository personRespository;
+    private final PersonRepository personRepository;
 
-    public PersonService(PersonRespository personRespository) {
-        this.personRespository = personRespository;
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
     /**
      * to add and save a student in the table student
-     * @param p: student to save
-     * @return id of the entry
+     * @param p : student to save
      */
-    public Long addPerson(@Valid Person p){
-        return personRespository.saveAndFlush(p).getId();
+    public void addPerson(@Valid Person p){
+        personRepository.saveAndFlush(p);
     }
 
 //    /**
@@ -36,7 +35,7 @@ public class PersonService {
 //    public Person getPerson(String login){
 //        Person person = new Person();
 //        if(login != null){
-//            Optional<Person> optionalStudent = personRespository.findByLogin(login);
+//            Optional<Person> optionalStudent = personRepository.findByLogin(login);
 //            if(optionalStudent.isPresent())
 //                person = optionalStudent.get();
 //        }
@@ -51,7 +50,7 @@ public class PersonService {
     public Person getPerson(Long id){
         Person person = new Person();
         if(id != null){
-            Optional<Person> optionalStudent = personRespository.findById(id);
+            Optional<Person> optionalStudent = personRepository.findById(id);
             if(optionalStudent.isPresent())
                 person = optionalStudent.get();
         }
@@ -64,9 +63,9 @@ public class PersonService {
      */
     public void removePerson(Long id){
         if(id != null){
-            Optional<Person> optionalStudent = personRespository.findById(id);
+            Optional<Person> optionalStudent = personRepository.findById(id);
             if(optionalStudent.isPresent()) {
-                personRespository.deleteById(Math.toIntExact(id));
+                personRepository.deleteById(Math.toIntExact(id));
             }
         }
     }
@@ -77,6 +76,6 @@ public class PersonService {
      */
     // not used jet
     public List<Person> findStudent(){
-        return personRespository.findAll();
+        return personRepository.findAll();
     }
 }

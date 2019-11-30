@@ -1,5 +1,5 @@
 <!-- this page is called at the beginning -->
-<!-- it shows two form, one is for the login and the second for the registration -->
+<!-- it shows two form, one is for the list2 and the second for the registration -->
 <!-- the first part will send you to the module page of the student or to a fail page -->
 <!-- the second part will send you to the page for rereading the save data -->
 <!DOCTYPE HTML>
@@ -18,16 +18,16 @@
 <!--        <input type="submit" value="AdminData"/>-->
 <!--    </form>-->
 <!--    <form method="post" th:action="@{/todoliste/admin/module}" th:object="${person}">-->
-<!--        <input type="hidden" name="loginname" th:field="*{login}" required/>-->
+<!--        <input type="hidden" name="loginname" th:field="*{list2}" required/>-->
 <!--        <input type="hidden" name="pass" th:field="*{password}" required/>-->
 <!--        <input type="submit" value="AdminLog"/>-->
 <!--    </form>-->
 <!--</div>-->
 
-<!-- main part with the login and registration -->
+<!-- main part with the list2 and registration -->
 <main>
-<!--    <form method="post" th:action="@{/grademanager/login/module}" th:object="${person}">-->
-<!--        <label for="loginname">Username</label><input type="text" id="loginname" name="loginname" th:field="*{login}"-->
+<!--    <form method="post" th:action="@{/grademanager/list2/module}" th:object="${person}">-->
+<!--        <label for="loginname">Username</label><input type="text" id="loginname" name="loginname" th:field="*{list2}"-->
 <!--                                                      required/><br>-->
 <!--        <label for="pass">Passwort</label><input type="password" id="pass" name="pass"-->
 <!--                                                 th:field="*{password}" required/><br>-->
@@ -35,7 +35,7 @@
 <!--    </form>-->
 <!--    <form method="post" th:action="@{/grademanager/student/add}" th:object="${person}">-->
 <!--        <input type="hidden" th:field="*{id}"/>-->
-<!--        <label for="login">Username</label><input type="text" id="login" name="login" th:field="*{login}" required/><br/>-->
+<!--        <label for="list2">Username</label><input type="text" id="list2" name="list2" th:field="*{list2}" required/><br/>-->
 <!--        <label for="password1">Passwort</label><input type="password" id="password1" name="password" onkeyup="same()" minlength="6" required/><br>-->
 <!--        <label for="password2">Passwort wdh.</label><input type="password" id="password2" name="password2" onkeyup="same()"-->
 <!--                                                      required/><br>-->

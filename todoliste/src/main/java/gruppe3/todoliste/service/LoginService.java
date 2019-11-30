@@ -1,7 +1,7 @@
 package gruppe3.todoliste.service;
 
-import gruppe3.todoliste.repos.LoginRespository;
 import gruppe3.todoliste.model.Login;
+import gruppe3.todoliste.repos.LoginRepository;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -13,19 +13,18 @@ import java.util.Optional;
  */
 @Service
 public class LoginService {
-    private final LoginRespository loginRespository;
+    private final LoginRepository loginRepository;
 
-    public LoginService(LoginRespository loginRespository) {
-        this.loginRespository = loginRespository;
+    public LoginService(LoginRepository loginRepository) {
+        this.loginRepository = loginRepository;
     }
 
     /**
      * to add and save a student in the table student
-     * @param l: student to save
-     * @return id of the entry
+     * @param l : student to save
      */
-    public Long addLogin(@Valid Login l){
-        return loginRespository.saveAndFlush(l).getId();
+    public void addLogin(@Valid Login l){
+        loginRepository.saveAndFlush(l);
     }
 
     /**
@@ -36,27 +35,27 @@ public class LoginService {
     public Login getLogin(Long id){
         Login login = new Login();
         if(id != null){
-            Optional<Login> optionalStudent = loginRespository.findById(id);
-            if(optionalStudent.isPresent())
-                login = optionalStudent.get();
+            Optional<Login> optionalPerson = loginRepository.findById(id);
+            if(optionalPerson.isPresent())
+                login = optionalPerson.get();
         }
         return login;
     }
 
-//    /**
-//     * to get a student form the table student with a loginname
-//     * @param loginname: id of a student
-//     * @return student with the correct id name from the table student
-//     */
-//    public Login getLogin(String loginname){
-//        Login login = new Login();
-//        if(loginname != null){
-//            Optional<Login> optionalStudent = loginRespository.findByLogin(loginname);
-//            if(optionalStudent.isPresent())
-//                login = optionalStudent.get();
-//        }
-//        return login;
-//    }
+    /**
+     * to get a student form the table student with a username
+     * @param username: id of a student
+     * @return student with the correct id name from the table student
+     */
+    public Login getLogin(String username){
+        Login login = new Login();
+        if(username != null){
+            Optional<Login> optionalPerson = loginRepository.findByUsername(username);
+            if(optionalPerson.isPresent())
+                login = optionalPerson.get();
+        }
+        return login;
+    }
 
     /**
      * to delete a student from the table student
@@ -64,19 +63,19 @@ public class LoginService {
      */
     public void removeLogin(Long id){
         if(id != null){
-            Optional<Login> optionalStudent = loginRespository.findById(id);
-            if(optionalStudent.isPresent()) {
-                loginRespository.deleteById(Math.toIntExact(id));
+            Optional<Login> optionalPerson = loginRepository.findById(id);
+            if(optionalPerson.isPresent()) {
+                loginRepository.deleteById(Math.toIntExact(id));
             }
         }
     }
 
     /**
-     * to get a list of all students from the table student
-     * @return list of all students of the table student
+     * to get a login of all students from the table student
+     * @return login of all students of the table student
      */
     // not used jet
-    public List<Login> findStudent(){
-        return loginRespository.findAll();
+    public List<Login> findPerson(){
+        return loginRepository.findAll();
     }
 }

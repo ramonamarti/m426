@@ -2,7 +2,7 @@ package gruppe3.todoliste.service;
 
 import gruppe3.todoliste.model.List;
 import org.springframework.stereotype.Service;
-import gruppe3.todoliste.repos.ListRespository;
+import gruppe3.todoliste.repos.ListRepository;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -12,10 +12,10 @@ import java.util.Optional;
  */
 @Service
 public class ListService {
-    private final ListRespository listRespository;
+    private final ListRepository listRepository;
 
-    public ListService(ListRespository listRespository) {
-        this.listRespository = listRespository;
+    public ListService(ListRepository listRepository) {
+        this.listRepository = listRepository;
     }
 
     /**
@@ -24,7 +24,7 @@ public class ListService {
      * @return id of the entry
      */
     public Long addList(@Valid List l){
-        return listRespository.saveAndFlush(l).getId();
+        return listRepository.saveAndFlush(l).getId();
     }
 
     /**
@@ -35,7 +35,7 @@ public class ListService {
     public List getList(Long id){
         List module = new List();
         if(id != null){
-            Optional<List> optionalList = listRespository.findById(id);
+            Optional<List> optionalList = listRepository.findById(id);
             if(optionalList.isPresent())
                 module = optionalList.get();
         }
@@ -49,9 +49,9 @@ public class ListService {
      */
     public void removeList(Long id){
         if(id != null){
-            Optional<List> optionalList = listRespository.findById(id);
+            Optional<List> optionalList = listRepository.findById(id);
             if(optionalList.isPresent())
-                listRespository.deleteById(Math.toIntExact(id));
+                listRepository.deleteById(Math.toIntExact(id));
         }
     }
 }
