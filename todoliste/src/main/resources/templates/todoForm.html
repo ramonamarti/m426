@@ -4,10 +4,12 @@
 <!--
 <html xmlns:th="http://www.thymeleaf.org">-->
 <head>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
     <meta charset="UTF-8">
     <title>Todo Eintragen</title>
 </head>
 <body>
+<div th:replace="/fragments :: head"></div>
 <p th:if="${log == null}">Du muss eingeloggt sein</p>
 
 <div th:if="${log}" class="container">
@@ -16,23 +18,23 @@
 
 </div>
 
-    <hr>
+<hr>
 
 
 
-    <fieldset>
-        <form method="post" th:action="@{/todo/add}" th:object="${list}">
-            <h3>Neue </h3>
-         <p>Beschreibung <input type="text" th:field="*{description}" /></p>
-            <p>Date <input type="text" th:field="*{date}" /></p>
-            <p>Person ID<input type="text" th:field="*{personFk}" /></p>
+<fieldset>
+    <form method="post" th:action="@{/todo/add}" th:object="${list}">
+        <h3>Neue </h3>
+        <p>Beschreibung <input type="text" th:field="*{description}" /></p>
+        <p>Date <input type="text" th:field="*{date}" /></p>
+        <p>Person ID<input type="text" th:field="*{personFk}" /></p>
 
-            <p><input type="submit" value="Senden" /> <input type="reset" value="Reset" /></p>
-        </form>
-    </fieldset>
-    <hr>
+        <p><input type="submit" value="Senden" /> <input type="reset" value="Reset" /></p>
+    </form>
+</fieldset>
+<hr>
 
 
-
+<div th:replace="/fragments :: footer"></div>
 </body>
 </html>
