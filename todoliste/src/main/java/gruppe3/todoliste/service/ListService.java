@@ -45,7 +45,7 @@ public class ListService {
 
     }
 
-    public List<List> getAllList(){
+    public java.util.List<List> getAllList(){
 
 
         return listRepository.findAll();
@@ -53,14 +53,11 @@ public class ListService {
     }
 
     /**
-     * to delete a module from the table module
-     * @param id: id of a module
+     *
+     * @param id welche id gelöscht werden soll
      */
-    public void removeList(Long id){
-        if(id != null){
-            Optional<List> optionalList = listRepository.findById(id);
-            if(optionalList.isPresent())
-                listRepository.deleteById(Math.toIntExact(id));
-        }
+    public void deleteList(Long id){
+        List list = getList(id) ;
+        listRepository.delete(list);
     }
 }
