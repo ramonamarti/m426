@@ -9,8 +9,8 @@ import java.util.Optional;
 
 /***
  * dashboard to show all entries
- * Author: Michi
- */
+ *
+ * */
 @Service
 public class ListService {
     private final ListRepository listRepository;
