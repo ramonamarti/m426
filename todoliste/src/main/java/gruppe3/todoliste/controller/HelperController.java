@@ -1,6 +1,5 @@
 package gruppe3.todoliste.controller;
 
-import gruppe3.todoliste.model.List;
 import gruppe3.todoliste.model.Login;
 import gruppe3.todoliste.model.Person;
 import gruppe3.todoliste.service.ListService;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * controller to manage the pages of the category admin and all general pages like home, password check, login and out
@@ -41,26 +41,48 @@ public class HelperController {
      */
     @GetMapping
     public String showLogin(Model model) {
-//        Student student = new Student();
-//        model.addAttribute(student);
+//        Person person = new Person();
+//        model.addAttribute(person);
 //        Direction[] directions = Direction.values();
 //        model.addAttribute(directions);
 //        model.addAttribute("no", Bool.Nein);
 //        Bool[] bools = Bool.values();
 //        model.addAttribute(bools);
-//        List<Student> students = studentService.findStudent();
-//        System.out.println(students);
-//        model.addAttribute(students);
+//        List<Person> persons = personService.findPerson();
+//        System.out.println(persons);
+//        model.addAttribute(persons);
+        Person person = new Person();
+        Login login = new Login();
+        login.setPersonFk(person);
+        model.addAttribute(person);
+        return "login-test";
+    }
+
+    @PostMapping("/login-test")
+    public String addPerson(Model model, @Valid @ModelAttribute Person person, @Valid @ModelAttribute Login login) {
+        List<Person> allPersons = personService.findPerson();
+        List<Login> allLogins = loginService.findLogin();
+        if(!allPersons.contains(person)){
+            personService.addPerson(person);
+        } else {
+            personService.getPerson(person.getId());
+        }
+        login.setPersonFk(person);
+        boolean passwordCriteria = login.getPassword().length()>=8;
+        if(!allLogins.contains(login) && passwordCriteria){
+            loginService.addLogin(login);
+            model.addAttribute(login);
+            return "login-test";
+        }
         return "home";
     }
 
-    @PostMapping("/addPerson")
-    public String addPerson(Model model, @Valid @ModelAttribute Person person, @Valid @ModelAttribute Login login) {
-        personService.addPerson(person);
-        login.setPersonFk(person);
+    @PostMapping("/board")
+    public String loginBoard(Model model, @Valid @ModelAttribute Login login) {
+
         loginService.addLogin(login);
         model.addAttribute(login);
-        return "home";
+        return "login-test";
     }
 }
 

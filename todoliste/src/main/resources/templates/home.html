@@ -1,6 +1,6 @@
 <!-- this page is called at the beginning -->
 <!-- it shows two form, one is for the list2 and the second for the registration -->
-<!-- the first part will send you to the module page of the student or to a fail page -->
+<!-- the first part will send you to the module page of the person or to a fail page -->
 <!-- the second part will send you to the page for rereading the save data -->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="de">
@@ -33,7 +33,7 @@
 <!--                                                 th:field="*{password}" required/><br>-->
 <!--        <input type="submit" value="Einloggen">-->
 <!--    </form>-->
-<!--    <form method="post" th:action="@{/grademanager/student/add}" th:object="${person}">-->
+<!--    <form method="post" th:action="@{/grademanager/person/add}" th:object="${person}">-->
 <!--        <input type="hidden" th:field="*{id}"/>-->
 <!--        <label for="list2">Username</label><input type="text" id="list2" name="list2" th:field="*{list2}" required/><br/>-->
 <!--        <label for="password1">Passwort</label><input type="password" id="password1" name="password" onkeyup="same()" minlength="6" required/><br>-->
@@ -53,4 +53,4 @@
 </html>
 
 <!-- database for checking -->
-<!-- select * from student join city on student_city_fk=city.id; select * from module; select * from exam join grade on exam_grade_fk=grade.id; -->
+<!-- select * from person join city on person_city_fk=city.id; select * from module; select * from exam join grade on exam_grade_fk=grade.id; -->
