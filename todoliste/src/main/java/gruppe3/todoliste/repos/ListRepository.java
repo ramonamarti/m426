@@ -11,7 +11,7 @@ import java.util.Optional;
  * repository to find a module with the id
  */
 @Repository
-public interface ListRespository extends
+public interface ListRepository extends
         JpaRepository<List,Integer>, CrudRepository<List,Integer> {
     Optional<List> findById(Long id);
 }

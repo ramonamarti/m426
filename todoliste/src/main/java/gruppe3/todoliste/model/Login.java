@@ -8,13 +8,12 @@ import javax.validation.constraints.NotNull;
 /**
  * Diese Klasse erstellt die Tabelle "list" mit den folgenden Attributen:
  * id
- * date
- * description
+ * username
+ * password
  * personFk
- * Author: Cristina
  */
-@Entity(name = "login")
-@Table(name = "login")
+@Entity(name = "list")
+@Table(name = "list")
 public class Login {
 
     @Id
@@ -24,21 +23,22 @@ public class Login {
 
     @NotEmpty
     @NotNull
-    private String date;
+    @Column(unique = true)
+    private String username;
 
     @NotEmpty
     @NotNull
-    private String description;
+    private String password;
 
     @NotEmpty
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "LoginPerson_Fk")
+    @JoinColumn(name = "ListPerson_Fk")
     private Person personFk;
 
-    public Login(@NotEmpty @NotNull String date, @NotEmpty @NotNull String description, @NotEmpty @NotNull Person personFk) {
-        this.date = date;
-        this.description = description;
+    public Login(@NotEmpty @NotNull String username, @NotEmpty @NotNull String password, @NotEmpty @NotNull Person personFk) {
+        this.username = username;
+        this.password = password;
         this.personFk = personFk;
     }
 
@@ -54,20 +54,20 @@ public class Login {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
+    public String getUsername() {
+        return username;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Person getPersonFk() {
