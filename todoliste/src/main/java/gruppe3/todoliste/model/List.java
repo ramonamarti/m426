@@ -31,9 +31,11 @@ public class List {
 
     @NotEmpty
     @NotNull
-    private Integer personFk;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "ListPerson_Fk")
+    private Person personFk;
 
-    public List(@NotEmpty @NotNull String username, @NotEmpty @NotNull String password, @NotEmpty @NotNull Integer personFk) {
+    public List(@NotEmpty @NotNull String username, @NotEmpty @NotNull String password, @NotEmpty @NotNull Person personFk) {
         this.username = username;
         this.password = password;
         this.personFk = personFk;
@@ -67,11 +69,11 @@ public class List {
         this.password = password;
     }
 
-    public Integer getPersonFk() {
+    public Person getPersonFk() {
         return personFk;
     }
 
-    public void setPersonFk(Integer personFk) {
+    public void setPersonFk(Person personFk) {
         this.personFk = personFk;
     }
 }

@@ -12,8 +12,8 @@ import javax.validation.constraints.NotNull;
  * description
  * personFk
  */
-@Entity(name = "list")
-@Table(name = "list")
+@Entity(name = "login")
+@Table(name = "login")
 public class Login {
 
     @Id
@@ -31,9 +31,11 @@ public class Login {
 
     @NotEmpty
     @NotNull
-    private Integer personFk;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "LoginPerson_Fk")
+    private Person personFk;
 
-    public Login(@NotEmpty @NotNull String date, @NotEmpty @NotNull String description, @NotEmpty @NotNull Integer personFk) {
+    public Login(@NotEmpty @NotNull String date, @NotEmpty @NotNull String description, @NotEmpty @NotNull Person personFk) {
         this.date = date;
         this.description = description;
         this.personFk = personFk;
@@ -67,11 +69,11 @@ public class Login {
         this.description = description;
     }
 
-    public Integer getPersonFk() {
+    public Person getPersonFk() {
         return personFk;
     }
 
-    public void setPersonFk(Integer personFk) {
+    public void setPersonFk(Person personFk) {
         this.personFk = personFk;
     }
 }
