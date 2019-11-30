@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -22,13 +23,11 @@ public class HelperController {
     private final LoginService loginService;
     private final ListService listService;
 
-
-    public HelperController(PersonService personService, LoginService loginService, ListService listService) {
+    public HelperController(PersonService personService, LoginService loginService,ListService listService) {
         this.personService = personService;
         this.loginService = loginService;
         this.listService = listService;
     }
-
 
     /**
      * shows login and registration page
@@ -38,33 +37,35 @@ public class HelperController {
      */
     @GetMapping
     public String showLogin(Model model) {
-//        Student student = new Student();
-//        model.addAttribute(student);
-//        Direction[] directions = Direction.values();
-//        model.addAttribute(directions);
-//        model.addAttribute("no", Bool.Nein);
-//        Bool[] bools = Bool.values();
-//        model.addAttribute(bools);
-//        List<Student> students = studentService.findStudent();
-//        System.out.println(students);
-//        model.addAttribute(students);
-//        model.addAttribute("todos", listService.getList());
+        Person person = new Person();
+        Login login = new Login();
+        login.setPersonFk(person);
+        model.addAttribute(login);
         return "home";
     }
-
-    @PostMapping("/addPerson")
-    public String addPerson(Model model, @Valid @ModelAttribute Person person, @Valid @ModelAttribute Login login) {
+    @GetMapping("/admin")
+    public String addPerson(Model model) {
+        Person person = new Person("Admin", "Admin");
+        Login login = new Login("admin", "123",person);
         personService.addPerson(person);
-        login.setPersonFk(person);
         loginService.addLogin(login);
+        List list = new List("2019-11-30","Test",person);
+        listService.addList(list);
         model.addAttribute(login);
         return "home";
     }
 
-  /*  @GetMapping
-    public String showForm(Model model){
-        model.addAttribute("todos", listService.getAllList());
+    @PostMapping("/admin/todos")
+    public String adminModule(Model model, HttpSession session) {
+        List list = new List();
+        model.addAttribute(list);
+        session.setAttribute("user", "admin");
+        Login login = loginService.getLogin((String) session.getAttribute("user"));
+        List todos = listService.getList(login.getPersonFk().getId());
+        model.addAttribute(todos);
         return "home";
-    }*/
+    }
+
+
 }
 

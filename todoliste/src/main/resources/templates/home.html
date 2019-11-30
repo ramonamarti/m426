@@ -13,42 +13,42 @@
 <h1 class="title">Anmeldung</h1>
 
 <!--  help tools admin  -->
-<!--<div class="hidden">-->
-<!--    <form method="get" th:action="@{/grademanager/admin}">-->
-<!--        <input type="submit" value="AdminData"/>-->
-<!--    </form>-->
-<!--    <form method="post" th:action="@{/todoliste/admin/module}" th:object="${person}">-->
-<!--        <input type="hidden" name="loginname" th:field="*{list2}" required/>-->
-<!--        <input type="hidden" name="pass" th:field="*{password}" required/>-->
-<!--        <input type="submit" value="AdminLog"/>-->
-<!--    </form>-->
-<!--</div>-->
+<div class="hidden">
+    <form method="get" th:action="@{/todo/admin}">
+        <input type="submit" value="AdminData"/>
+    </form>
+    <form method="post" th:action="@{/todo/admin/todos}" th:object="${login}">
+        <input type="hidden" name="username" th:field="*{username}" required/>
+        <input type="hidden" name="pass" th:field="*{password}" required/>
+        <input type="submit" value="AdminLog"/>
+    </form>
+</div>
 
 <!-- main part with the list2 and registration -->
 <main>
-<!--    <form method="post" th:action="@{/grademanager/list2/module}" th:object="${person}">-->
-<!--        <label for="loginname">Username</label><input type="text" id="loginname" name="loginname" th:field="*{list2}"-->
-<!--                                                      required/><br>-->
-<!--        <label for="pass">Passwort</label><input type="password" id="pass" name="pass"-->
-<!--                                                 th:field="*{password}" required/><br>-->
-<!--        <input type="submit" value="Einloggen">-->
-<!--    </form>-->
-<!--    <form method="post" th:action="@{/grademanager/student/add}" th:object="${person}">-->
-<!--        <input type="hidden" th:field="*{id}"/>-->
-<!--        <label for="list2">Username</label><input type="text" id="list2" name="list2" th:field="*{list2}" required/><br/>-->
-<!--        <label for="password1">Passwort</label><input type="password" id="password1" name="password" onkeyup="same()" minlength="6" required/><br>-->
-<!--        <label for="password2">Passwort wdh.</label><input type="password" id="password2" name="password2" onkeyup="same()"-->
-<!--                                                      required/><br>-->
-<!--        <p id="help" class="hidden">Passwörter müssen übereinstimmen</p>-->
-<!--        <label for="firstname">Voranme</label><input type="text" id="firstname" name="firstname"-->
-<!--                                                     th:field="*{firstname}" required/><br/>-->
-<!--        <label for="familyname">Nachname</label><input type="text" id="familyname" name="familyname"-->
-<!--                                                       th:field="*{familyname}" required/><br/>-->
-<!--        <input type="submit" id="reg" value="Registrieren"/>-->
-<!--    </form>-->
+    <form method="post" th:action="@{/todo/loginPerson}" th:object="${login}">
+        <label for="username">Username</label><input type="text" id="username" name="username" th:field="*{username}"
+                                                      required/><br>
+        <label for="pass">Passwort</label><input type="password" id="pass" name="pass"
+                                                 th:field="*{password}" required/><br>
+        <input type="submit" value="Einloggen">
+    </form>
+    <form method="post" th:action="@{/todo/addPerson}" th:object="${login}">
+        <input type="hidden" th:field="*{id}"/>
+        <label for="list2">Username</label><input type="text" id="list2" name="list2" th:field="*{username}" required/><br/>
+        <label for="password1">Passwort</label><input type="password" id="password1" name="password" onkeyup="same()" minlength="6" required/><br>
+        <label for="password2">Passwort wdh.</label><input type="password" id="password2" name="password2" onkeyup="same()"
+                                                      required/><br>
+        <p id="help" class="hidden">Passwörter müssen übereinstimmen</p>
+        <label for="firstname">Voranme</label><input type="text" id="firstname" name="firstname"
+                                                     th:field="*{personFk.vorname}" required/><br/>
+        <label for="familyname">Nachname</label><input type="text" id="familyname" name="familyname"
+                                                       th:field="*{personFk.nachname}" required/><br/>
+        <input type="submit" id="reg" value="Registrieren"/>
+    </form>
 
     <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link"  href="http://localhost:8080/todo">ToDo Eintrag erstellen</a></li>
+        <li class="nav-item"><a class="nav-link"  href="/todo/todoform">ToDo Eintrag erstellen</a></li>
 
 
     </ul>
@@ -72,7 +72,6 @@
 
             <td><a th:href="@{'/home/delete?id='+${todo.id}}"><i class="material-icons">delete</i></a></td>
         </tr>
-
         </tbody>
     </table>
 
