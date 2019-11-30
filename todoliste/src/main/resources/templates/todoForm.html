@@ -6,40 +6,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo Eintragen</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 <body>
 <p th:if="${log == null}">Du muss eingeloggt sein</p>
+
 <div th:if="${log}" class="container">
 
     <p>Du bist eingeloggt</p>
 
 </div>
-    <nav class="navbar navbar-expand-sm bg-light">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="http://localhost:8081/home">Startseite</a></li>
-            <li class="nav-item"><a class="nav-link" href="http://localhost:8080/journal">Journaleintrag</a></li>
 
-
-
-            <li class="nav-item"><form th:if="${log}" name="logout" th:action="@{/main/logout}" method="post" th:object="${person}">
-                <input type="submit" value="logout"/>
-
-            </form></li>
-        </ul>
-    </nav>
     <hr>
 
 
 
-
     <fieldset>
-        <form method="post" th:action="@{/list/add}" th:object="${list}">
-            <h3>Neue ToDo</h3>
-            <p>Falls der Sektor noch nicht auf der Liste ist, können Sie hier ein neues hinzufügen</p>
-            <p>Beschreibung <input type="text" th:field="*{description}" /></p>
+        <form method="post" th:action="@{/todo/add}" th:object="${list}">
+            <h3>Neue </h3>
+         <p>Beschreibung <input type="text" th:field="*{description}" /></p>
             <p>Date <input type="text" th:field="*{date}" /></p>
+            <p>Person ID<input type="text" th:field="*{personFk}" /></p>
 
             <p><input type="submit" value="Senden" /> <input type="reset" value="Reset" /></p>
         </form>

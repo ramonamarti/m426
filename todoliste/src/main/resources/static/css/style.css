@@ -13,6 +13,7 @@ html {
 
 }
 
+
 /* definitions for thw whole page */
 body {
     /* definitions for colors, size and spacing */
@@ -125,7 +126,7 @@ td {
 /* defines the design of links */
 a {
     font-size: 20pt;
-    color: white;
+    color: #000;
     text-decoration: none;
 }
 
