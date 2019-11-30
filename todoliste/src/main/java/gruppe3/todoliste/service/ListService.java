@@ -9,9 +9,8 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 /***
- * dashboard to show all entries
- *
- * */
+ * service to add a module, get a module with its id or remove a module
+ */
 @Service
 public class ListService {
     @Autowired
@@ -22,8 +21,8 @@ public class ListService {
     }
 
     /**
-     * to add and save a entry to table list
-     * @param l: entry to save to table list
+     * to add and save a module in the table module
+     * @param l: module to save
      * @return id of the entry
      */
     public Long addList(@Valid List l){
@@ -31,9 +30,9 @@ public class ListService {
     }
 
     /**
-     * get a entry with a id from table list
-     * @param id: id of a entry from table list
-     * @return entry with the correct id from table list
+     * to get a module form the table module with a id
+     * @param id: id of a module
+     * @return module with the correct id from the table module
      */
     public List getList(Long id){
         List module = new List();
@@ -46,7 +45,7 @@ public class ListService {
 
     }
 
-    public List<List> getAllList(){
+    public java.util.List<List> getAllList(){
 
 
         return listRepository.findAll();
@@ -54,14 +53,11 @@ public class ListService {
     }
 
     /**
-     * to delete a entry from table list
-     * @param id: id of a entry from table list
+     *
+     * @param id welche id gelöscht werden soll
      */
-    public void removeList(Long id){
-        if(id != null){
-            Optional<List> optionalList = listRepository.findById(id);
-            if(optionalList.isPresent())
-                listRepository.deleteById(Math.toIntExact(id));
-        }
+    public void deleteList(Long id){
+        List list = getList(id) ;
+        listRepository.delete(list);
     }
 }
