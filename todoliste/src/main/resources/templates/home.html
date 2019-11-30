@@ -25,16 +25,15 @@
 
 <!-- main part with the login and registration -->
 <main>
-<!--    <form method="post" th:action="@{/grademanager/login/module}" th:object="${student}">-->
+<!--    <form method="post" th:action="@{/grademanager/login/module}" th:object="${person}">-->
 <!--        <label for="loginname">Username</label><input type="text" id="loginname" name="loginname" th:field="*{login}"-->
 <!--                                                      required/><br>-->
 <!--        <label for="pass">Passwort</label><input type="password" id="pass" name="pass"-->
 <!--                                                 th:field="*{password}" required/><br>-->
 <!--        <input type="submit" value="Einloggen">-->
 <!--    </form>-->
-<!--    <form method="post" th:action="@{/grademanager/student/add}" th:object="${student}">-->
+<!--    <form method="post" th:action="@{/grademanager/student/add}" th:object="${person}">-->
 <!--        <input type="hidden" th:field="*{id}"/>-->
-<!--        <input type="hidden" th:field="*{city.id}"/>-->
 <!--        <label for="login">Username</label><input type="text" id="login" name="login" th:field="*{login}" required/><br/>-->
 <!--        <label for="password1">Passwort</label><input type="password" id="password1" name="password" onkeyup="same()" minlength="6" required/><br>-->
 <!--        <label for="password2">Passwort wdh.</label><input type="password" id="password2" name="password2" onkeyup="same()"-->
@@ -44,26 +43,8 @@
 <!--                                                     th:field="*{firstname}" required/><br/>-->
 <!--        <label for="familyname">Nachname</label><input type="text" id="familyname" name="familyname"-->
 <!--                                                       th:field="*{familyname}" required/><br/>-->
-<!--        <label for="street">Strasse</label><input type="text" id="street" name="street" th:field="*{street}" required/><br/>-->
-<!--        <label for="city">PLZ, Ort</label><input type="number" min="1000" max="9999" id="zip" name="zip"-->
-<!--                                                 th:field="*{city.zip}"/><input type="text" id="city" name="city"-->
-<!--                                                                                th:field="*{city.name}" required/><br/>-->
-<!--        <label for="direction">Richtung</label>-->
-<!--        <select id="direction" th:field="*{direction}">-->
-<!--            <option th:each="d : ${directionList}" th:value="${d}" th:text="${d}"></option>-->
-<!--        </select><br/>-->
-<!--        <select id="deactivated" th:field="*{deactivated}" class="hidden">-->
-<!--            <option th:each="b : ${boolList}" th:value="${b}" th:text="${b}"></option>-->
-<!--        </select><br/>-->
 <!--        <input type="submit" id="reg" value="Registrieren"/>-->
 <!--    </form>-->
-
-<!--    <div th:text="${studentList}"></div>-->
-<!--    <div th:each="s : ${studentList}" th:object="${s}">-->
-<!--        <div th:text="*{firstname}"></div>-->
-<!--        <div th:text="*{familyname}"></div>-->
-<!--        <div th:text="*{login}"></div>-->
-<!--    </div>-->
 </main>
 
 <div th:replace="/fragments :: footer"></div>
