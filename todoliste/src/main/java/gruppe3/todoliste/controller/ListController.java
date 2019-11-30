@@ -37,7 +37,7 @@ public class ListController {
 
     }/**/
 
-    @GetMapping
+    @GetMapping("/todoform")
     public String showForm(Model model){
         model.addAttribute("list", new List());
         return "todoForm";
