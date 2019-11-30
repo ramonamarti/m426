@@ -33,7 +33,7 @@ public class Login {
     @NotEmpty
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "LoginPerson_Fk")
+    @JoinColumn(name = "ListPerson_Fk")
     private Person personFk;
 
     public Login(@NotEmpty @NotNull String username, @NotEmpty @NotNull String password, @NotEmpty @NotNull Person personFk) {

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 /***
- * service to add a person, get a person with its login name, get a person with its id or remove a person
+ * service to add a student, get a student with its login name, get a student with its id or remove a student
  */
 @Service
 public class PersonService {
@@ -20,62 +20,63 @@ public class PersonService {
     }
 
     /**
-     * to add and save a person in the table person
-     * @param p : person to save
+     * to add and save a student in the table student
+     * @param p : student to save
      */
     public void addPerson(@Valid Person p){
         personRepository.saveAndFlush(p);
     }
 
 //    /**
-//     * to get a person form the table person with a login name
-//     * @param login: login of a person
-//     * @return person with the correct login name from the table person
+//     * to get a student form the table student with a login name
+//     * @param login: login of a student
+//     * @return student with the correct login name from the table student
 //     */
 //    public Person getPerson(String login){
 //        Person person = new Person();
 //        if(login != null){
-//            Optional<Person> optionalPerson = personRepository.findByLogin(login);
-//            if(optionalPerson.isPresent())
-//                person = optionalPerson.get();
+//            Optional<Person> optionalStudent = personRepository.findByLogin(login);
+//            if(optionalStudent.isPresent())
+//                person = optionalStudent.get();
 //        }
 //        return person;
 //    }
 
     /**
-     * to get a person form the table person with an id
-     * @param id: id of a person
-     * @return person with the correct id name from the table person
+     * to get a student form the table student with an id
+     * @param id: id of a student
+     * @return student with the correct id name from the table student
      */
     public Person getPerson(Long id){
         Person person = new Person();
         if(id != null){
-            Optional<Person> optionalPerson = personRepository.findById(id);
-            if(optionalPerson.isPresent())
-                person = optionalPerson.get();
+            Optional<Person> optionalStudent = personRepository.findById(id);
+            if(optionalStudent.isPresent())
+                person = optionalStudent.get();
         }
         return person;
     }
 
     /**
-     * to delete a person from the table person
-     * @param id: id of a person
+     * to delete a student from the table student
+     * @param id: id of a student
      */
     public void removePerson(Long id){
         if(id != null){
-            Optional<Person> optionalPerson = personRepository.findById(id);
-            if(optionalPerson.isPresent()) {
+            Optional<Person> optionalStudent = personRepository.findById(id);
+            if(optionalStudent.isPresent()) {
                 personRepository.deleteById(Math.toIntExact(id));
             }
         }
     }
 
     /**
-     * to get a list of all persons from the table person
-     * @return list of all persons of the table person
+     * to get a list of all students from the table student
+     * @return list of all students of the table student
      */
     // not used jet
-    public List<Person> findPerson(){
+    public List<Person> findStudent(){
+
         return personRepository.findAll();
     }
 }
