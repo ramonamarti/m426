@@ -1,6 +1,7 @@
 package gruppe3.todoliste.service;
 
 import gruppe3.todoliste.model.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import gruppe3.todoliste.repos.ListRespository;
 
@@ -12,10 +13,19 @@ import java.util.Optional;
  */
 @Service
 public class ListService {
-    private final ListRespository listRespository;
 
-    public ListService(ListRespository listRespository) {
-        this.listRespository = listRespository;
+
+    @Autowired
+    private ListRespository listRespository;
+
+    /**
+     *
+     * @param list ToDoEintrag welche hinzugefügt werden soll
+     * @return ID von hinzugefügte Route
+     */
+    public Long addList(@Valid List list){
+        listRespository.saveAndFlush(list);
+        return list.getId();
     }
 
 //    /**

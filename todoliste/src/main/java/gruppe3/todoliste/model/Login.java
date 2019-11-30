@@ -12,8 +12,8 @@ import javax.validation.constraints.NotNull;
  * description
  * personFk
  */
-@Entity(name = "list")
-@Table(name = "list")
+@Entity(name = "login")
+@Table(name = "login")
 public class Login {
 
     @Id
