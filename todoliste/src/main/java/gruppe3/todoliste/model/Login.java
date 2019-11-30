@@ -12,8 +12,8 @@ import javax.validation.constraints.NotNull;
  * password
  * personFk
  */
-@Entity(name = "list")
-@Table(name = "list")
+@Entity(name = "login")
+@Table(name = "login")
 public class Login {
 
     @Id
@@ -33,7 +33,7 @@ public class Login {
     @NotEmpty
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "ListPerson_Fk")
+    @JoinColumn(name = "LoginPerson_Fk")
     private Person personFk;
 
     public Login(@NotEmpty @NotNull String username, @NotEmpty @NotNull String password, @NotEmpty @NotNull Person personFk) {

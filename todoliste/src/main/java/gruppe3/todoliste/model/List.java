@@ -13,13 +13,13 @@ import javax.validation.constraints.NotNull;
  * personFk
  * Author: Cristina
  */
-@Entity(name = "login")
-@Table(name = "login")
+@Entity(name = "list")
+@Table(name = "list")
 public class List {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_login")
-    @SequenceGenerator(name = "seq_login", allocationSize = 10)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_list")
+    @SequenceGenerator(name = "seq_list", allocationSize = 10)
     private Long id;
 
     @NotEmpty
@@ -33,7 +33,7 @@ public class List {
     @NotEmpty
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "LoginPerson_Fk")
+    @JoinColumn(name = "ListPerson_Fk")
     private Person personFk;
 
     public List(@NotEmpty @NotNull String date, @NotEmpty @NotNull String description, @NotEmpty @NotNull Person personFk) {
