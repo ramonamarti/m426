@@ -5,9 +5,10 @@
     <title>Todo Eintragen</title>
 </head>
 <body>
-<p th:if="${log == null}">Du muss eingeloggt sein</p>
 
-<div th:if="${log}" class="container">
+<p th:if="${username == null}">Du muss eingeloggt sein</p>
+
+<div th:if="${username}" class="container">
 
     <p>Du bist eingeloggt</p>
 

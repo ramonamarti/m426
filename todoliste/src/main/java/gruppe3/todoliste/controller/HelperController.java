@@ -38,34 +38,49 @@ public class HelperController {
     @GetMapping
     public String showLogin(Model model) {
         Person person = new Person();
+        List todo = new List();
         Login login = new Login();
         login.setPersonFk(person);
         model.addAttribute(login);
+        model.addAttribute(todo);
         return "home";
     }
 
     @GetMapping("/admin")
-    public String addPerson(Model model) {
-        Person person = new Person("Admin", "Admin");
-        person = personService.addPerson(person);
-        Login login = new Login("admin", "123",person);
-        loginService.addLogin(login);
-        List list = new List("2019-11-30","Test",person);
-        List list2 = new List("2019-11-30","Test",person);
-        listService.addList(list);
-        listService.addList(list2);
-        model.addAttribute(login);
+    public String addAdmin(Model model) {
+        if(loginService.getLogin("admin").getUsername() == null || loginService.getLogin("admin").getUsername().equals("")){
+            Person person = new Person("Admin", "Admin");
+            person = personService.addPerson(person);
+            Login login = new Login("admin", "123",person);
+            loginService.addLogin(login);
+            List todos = new List("2019-11-30","Test",person);
+            List list = new List("2019-11-30","Test",person);
+            listService.addList(todos);
+            listService.addList(list);
+            model.addAttribute(login);
+            model.addAttribute(todos);
+        } else {
+            Login login = loginService.getLogin("admin");
+            Person person = login.getPersonFk();
+            List todos = new List();
+            List list = new List();
+            model.addAttribute(login);
+            model.addAttribute(todos);
+            model.addAttribute(list);
+        }
         return "home";
     }
 
     @PostMapping("/admin/todos")
-    public String adminModule(Model model, HttpSession session) {
+    public String adminTodos(Model model, HttpSession session) {
         List list = new List();
         model.addAttribute(list);
         session.setAttribute("user", "admin");
         Login login = loginService.getLogin((String) session.getAttribute("user"));
         List todos = listService.getList(login.getPersonFk().getId());
         model.addAttribute(todos);
+        String username = "admin";
+        model.addAttribute(username);
         return "todoForm";
     }
 
