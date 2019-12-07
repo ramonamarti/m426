@@ -23,8 +23,8 @@ public class PersonService {
      * to add and save a student in the table student
      * @param p : student to save
      */
-    public void addPerson(@Valid Person p){
-        personRepository.saveAndFlush(p);
+    public Person addPerson(@Valid Person p){
+        return personRepository.saveAndFlush(p);
     }
 
 //    /**
@@ -75,8 +75,9 @@ public class PersonService {
      * @return list of all students of the table student
      */
     // not used jet
-    public List<Person> findStudent(){
+    public List<Person> findPerson(){
 
         return personRepository.findAll();
     }
+
 }
