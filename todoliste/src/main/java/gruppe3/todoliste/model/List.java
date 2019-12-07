@@ -27,6 +27,7 @@ public class List {
      */
     @NotEmpty
     @NotNull
+    @Column(name = "listDate")
     private String date;
 
     /**
@@ -42,7 +43,7 @@ public class List {
     @NotEmpty
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "LoginPerson_Fk")
+    @JoinColumn(name = "ListPerson_Fk")
     private Person personFk;
 
     /**
