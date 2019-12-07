@@ -1,58 +1,33 @@
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Todo Eintragen</title>
 </head>
 <body>
 
-<!-- WRAP VORBEREITET FÜR LOGIN STATUS-->
+<p th:if="${username == null}">Du muss eingeloggt sein</p>
 
-<!--
-<p th:if="${log == null}">Du muss eingeloggt sein</p>
-
-<div th:if="${log}" class="container">
+<div th:if="${username}" class="container">
 
     <p>Du bist eingeloggt</p>
 
 </div>
--->
 
     <hr>
 
 
-<div th:if="${todos == null}" class="container">
-
-    <p>Du bist eingeloggt</p>
-
 
     <fieldset>
-        <form method="post" th:action="@{/todoForm/add}" th:object="${todos}">
+        <form method="post" th:action="@{/todo/add}" th:object="${list}">
             <h3>Neue </h3>
-            <p>Beschreibung <input type="text" th:field="*{description}" /></p>
+         <p>Beschreibung <input type="text" th:field="*{description}" /></p>
             <p>Date <input type="text" th:field="*{date}" /></p>
             <p>Person ID<input type="text" th:field="*{personFk}" /></p>
 
             <p><input type="submit" value="Senden" /> <input type="reset" value="Reset" /></p>
         </form>
     </fieldset>
-</div>
-
-<div th:if="${todos}" class="container">
-    <fieldset>
-        <form method="post" th:action="@{/todoForm/update}" th:object="${todos}">
-            <h3>Neue </h3>
-            <p>Beschreibung <input type="text" th:field="*{description}" /></p>
-            <p>Date <input type="text" th:field="*{date}" /></p>
-            <p>Person ID<input type="text" th:field="*{personFk}" /></p>
-
-            <p><input type="submit" value="Senden" /> <input type="reset" value="Reset" /></p>
-        </form>
-    </fieldset>
-
-</div>
-
     <hr>
 
 

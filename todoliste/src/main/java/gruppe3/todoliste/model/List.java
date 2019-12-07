@@ -32,7 +32,7 @@ public class List {
     private String description;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "ListPerson_Fk")
+    @JoinColumn(name = "listPersonFk")
     private Person personFk;
 
     public List(@NotEmpty @NotNull String date, @NotEmpty @NotNull String description, @NotEmpty @NotNull Person personFk) {
