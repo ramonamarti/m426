@@ -51,7 +51,7 @@ public class HelperController {
 //        List<Student> students = studentService.findStudent();
 //        System.out.println(students);
 //        model.addAttribute(students);
-        return "home";
+        return "mainPage";
     }
 
     @PostMapping("/addPerson")
