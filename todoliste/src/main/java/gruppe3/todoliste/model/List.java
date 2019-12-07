@@ -40,8 +40,7 @@ public class List {
     /**
      * Erstellung Fremdschlüssel personFK
      */
-    @NotEmpty
-    @NotNull
+
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "listPersonFk")
     private Person personFk;

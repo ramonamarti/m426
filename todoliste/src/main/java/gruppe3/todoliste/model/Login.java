@@ -40,8 +40,7 @@ public class Login {
     /**
      * Erstellung Frendschlüssel personFk
      */
-    @NotEmpty
-    @NotNull
+
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "loginPersonFk")
     private Person personFk;
