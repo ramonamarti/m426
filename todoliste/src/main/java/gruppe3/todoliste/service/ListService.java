@@ -13,10 +13,12 @@ import java.util.Optional;
  */
 @Service
 public class ListService {
+
     @Autowired
     private ListRepository listRepository;
 
     public ListService(ListRepository listRepository) {
+
         this.listRepository = listRepository;
     }
 
@@ -26,6 +28,7 @@ public class ListService {
      * @return id of the entry
      */
     public Long addList(@Valid List l){
+
         return listRepository.saveAndFlush(l).getId();
     }
 
@@ -46,10 +49,7 @@ public class ListService {
     }
 
     public java.util.List<List> getAllList(){
-
-
         return listRepository.findAll();
-
     }
 
     /**
@@ -59,5 +59,14 @@ public class ListService {
     public void deleteList(Long id){
         List list = getList(id) ;
         listRepository.delete(list);
+    }
+
+    /**
+     *
+     * @param id welche todo gelöscht werden soll
+     */
+    public void editList(Long id){
+        List list = getList(id) ;
+        listRepository.save(list);
     }
 }
