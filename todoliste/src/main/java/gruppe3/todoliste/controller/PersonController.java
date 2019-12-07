@@ -60,13 +60,13 @@ public class PersonController {
             Login login1 = loginService.getLogin((String) session.getAttribute("user"));
             model.addAttribute(login1);
             model.addAttribute(username);
-            return "todoForm";
+            return "home";
         }
         Person person = new Person();
         Login login = new Login();
         login.setPersonFk(person);
         model.addAttribute(login);
-        return "home";
+        return "todoForm";
     }
 
 }

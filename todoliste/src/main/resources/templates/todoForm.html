@@ -6,20 +6,20 @@
 </head>
 <body>
 
-<p th:if="${username == null}">Du muss eingeloggt sein</p>
+<!--<p th:if="${username == null}">Du muss eingeloggt sein</p>
 
 <div th:if="${username}" class="container">
 
     <p>Du bist eingeloggt</p>
 
-</div>
+</div>-->
 
     <hr>
 
 
 
     <fieldset>
-        <form method="post" th:action="@{/todo/add}" th:object="${list}">
+        <form method="post" th:action="@{/todo/add}" th:object="${todos}">
             <h3>Neue </h3>
          <p>Beschreibung <input type="text" th:field="*{description}" /></p>
             <p>Date <input type="text" th:field="*{date}" /></p>
