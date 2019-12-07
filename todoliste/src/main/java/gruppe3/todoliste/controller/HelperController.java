@@ -16,7 +16,7 @@ import javax.validation.Valid;
  * controller to manage the pages of the category admin and all general pages like home, password check, login and out
  */
 @Controller
-@RequestMapping("/todoliste")
+@RequestMapping("/todo")
 public class HelperController {
     private final PersonService personService;
     private final LoginService loginService;
@@ -66,12 +66,5 @@ public class HelperController {
         model.addAttribute("todos", listService.getAllList());
         return "home";
     }*/
-
-    @GetMapping(value = "/delete", params ={"id"})
-    public String delete (@RequestParam(name ="id")Long id, Model model){
-        listService.deleteList(id);
-        model.addAttribute("todos", listService.getAllList());
-        return "redirect:/home";
-    }
 }
 

@@ -1,0 +1,56 @@
+<!-- this page is called at the beginning -->
+<!-- it shows two form, one is for the list2 and the second for the registration -->
+<!-- the first part will send you to the module page of the person or to a fail page -->
+<!-- the second part will send you to the page for rereading the save data -->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <title>Login Test</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+<body>
+<div th:replace="/fragments :: head"></div>
+<h1 class="title">Anmeldung</h1>
+
+<!--  help tools admin  -->
+<!--<div class="hidden">-->
+<!--    <form method="get" th:action="@{/grademanager/admin}">-->
+<!--        <input type="submit" value="AdminData"/>-->
+<!--    </form>-->
+<!--    <form method="post" th:action="@{/todoliste/admin/module}" th:object="${person}">-->
+<!--        <input type="hidden" name="username" th:field="*{list2}" required/>-->
+<!--        <input type="hidden" name="pass" th:field="*{password}" required/>-->
+<!--        <input type="submit" value="AdminLog"/>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!-- main part with the list2 and registration -->
+<main>
+        <form method="post" th:action="@{/todoliste/home}" th:object="${login}">
+            <label for="username">Username</label><input type="text" id="username" name="username" th:field="*{username}"
+                                                          required/><br>
+            <label for="pass">Passwort</label><input type="password" id="pass" name="pass"
+                                                     th:field="*{password}" required/><br>
+            <input type="submit" value="Einloggen">
+        </form>
+        <form method="post" th:action="@{/todoliste/home}" th:object="${login}">
+            <input type="hidden" th:field="*{id}"/>
+            <label for="username2">Username</label><input type="text" id="username2" name="username" th:field="*{username}" required/><br/>
+            <label for="password1">Passwort</label><input type="password" id="password1" name="password" onkeyup="same()" minlength="6" required/><br>
+            <label for="password2">Passwort wdh.</label><input type="password" id="password2" name="password2" onkeyup="same()"
+                                                          required/><br>
+            <p id="help" class="hidden">Passwörter müssen übereinstimmen</p>
+            <label for="firstname">Voranme</label><input type="text" id="firstname" name="firstname"
+                                                         th:field="*{personFk.vorname}" required/><br/>
+            <label for="familyname">Nachname</label><input type="text" id="familyname" name="familyname"
+                                                           th:field="*{personFk.nachname}" required/><br/>
+            <input type="submit" id="reg" value="Registrieren"/>
+        </form>
+</main>
+
+<div th:replace="/fragments :: footer"></div>
+</body>
+</html>
+
+<!-- database for checking -->
+<!-- select * from person join city on person_city_fk=city.id; select * from module; select * from exam join grade on exam_grade_fk=grade.id; -->
