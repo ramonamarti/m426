@@ -22,30 +22,51 @@ public class List {
     @SequenceGenerator(name = "seq_list", allocationSize = 10)
     private Long id;
 
+    /**
+     * Erstellung Attribut date
+     */
     @NotEmpty
     @NotNull
     private String date;
 
+    /**
+     * Erstellung Attribut description
+     */
     @NotEmpty
     @NotNull
     private String description;
 
+    /**
+     * Erstellung Fremdschlüssel personFK
+     */
     @NotEmpty
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "LoginPerson_Fk")
     private Person personFk;
 
+    /**
+     * Erstellung Konstruktor mit folgenden Parameter:
+     * @param date
+     * @param description
+     * @param personFk
+     */
     public List(@NotEmpty @NotNull String date, @NotEmpty @NotNull String description, @NotEmpty @NotNull Person personFk) {
         this.date = date;
         this.description = description;
         this.personFk = personFk;
     }
 
+    /**
+     * Erstellung leerer Konstruktor
+     */
     public List(){
 
     }
 
+    /**
+     * Erstellung Getter und Setter
+     */
     public Long getId() {
         return id;
     }

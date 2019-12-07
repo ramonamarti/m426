@@ -9,8 +9,9 @@ import javax.validation.constraints.NotNull;
  * id
  * vorname
  * nachname
- * and represent the object entity
+ * Author: Cristina
  */
+
 @Entity(name = "person")
 @Table(name = "person")
 public class Person {
@@ -20,24 +21,40 @@ public class Person {
     @SequenceGenerator(name = "seq_person", allocationSize = 10)
     private Long id;
 
+    /**
+     * Erstellung Attribut vorname
+     */
     @NotEmpty
     @NotNull
     private String vorname;
 
+    /**
+     * Erstellung Attribut nachname
+     */
     @NotEmpty
     @NotNull
     private String nachname;
 
-
+    /**
+     * Konstruktor mit folgenden Parameter:
+     * @param vorname
+     * @param nachname
+     */
     public Person(@NotEmpty @NotNull String vorname, @NotEmpty @NotNull String nachname) {
         this.vorname = vorname;
         this.nachname = nachname;
     }
 
+    /**
+     * leerer Konstruktor
+     */
     public Person(){
 
     }
 
+    /**
+     * Getter und Setter für alle Attribute
+     * */
     public Long getId() {
         return id;
     }
