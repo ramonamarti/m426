@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
  * Author: Cristina
  */
 @Entity(name = "list")
-@Table(name = "list")
 public class List {
 
     @Id
