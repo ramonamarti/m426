@@ -7,12 +7,11 @@ import javax.validation.constraints.NotNull;
 /**
  * Diese Klasse erstellt die Tabelle "person" mit den folgenden Attributen:
  * id
- * vorname
- * nachname
+ * firstname
+ * familyname
  * and represent the object entity
  */
 @Entity(name = "person")
-@Table(name = "person")
 public class Person {
 
     @Id
@@ -22,16 +21,16 @@ public class Person {
 
     @NotEmpty
     @NotNull
-    private String vorname;
+    private String firstname;
 
     @NotEmpty
     @NotNull
-    private String nachname;
+    private String familyname;
 
 
-    public Person(@NotEmpty @NotNull String vorname, @NotEmpty @NotNull String nachname) {
-        this.vorname = vorname;
-        this.nachname = nachname;
+    public Person(@NotEmpty @NotNull String firstname, @NotEmpty @NotNull String familyname) {
+        this.firstname = firstname;
+        this.familyname = familyname;
     }
 
     public Person(){
@@ -47,18 +46,18 @@ public class Person {
     }
 
     public String getVorname() {
-        return vorname;
+        return firstname;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setVorname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getNachname() {
-        return nachname;
+        return familyname;
     }
 
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setNachname(String familyname) {
+        this.familyname = familyname;
     }
 }
