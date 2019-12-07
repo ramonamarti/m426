@@ -48,7 +48,7 @@ public class HelperController {
 //        List<Student> students = studentService.findStudent();
 //        System.out.println(students);
 //        model.addAttribute(students);
-//        model.addAttribute("todos", listService.getList());
+        model.addAttribute("todos", listService.getAllList());
         return "home";
     }
 

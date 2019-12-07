@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * controller to manage the pages of the category admin and all general pages like home, password check, login and out
  */
 @Controller
-@RequestMapping("/todo")
+@RequestMapping("/todoForm")
 public class ListController {
 
     @Autowired
@@ -34,9 +34,15 @@ public class ListController {
 
     }/**/
 
+    /**
+     *
+     *
+     * @param model spring framework model
+     * @return todoForm wird angezeigt
+     */
     @GetMapping
     public String showForm(Model model){
-        model.addAttribute("list", new List());
+        model.addAttribute("todos", new List());
         return "todoForm";
     }
 
