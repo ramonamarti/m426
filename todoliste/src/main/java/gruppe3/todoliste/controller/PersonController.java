@@ -8,7 +8,6 @@ import gruppe3.todoliste.service.LoginService;
 import gruppe3.todoliste.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,26 +23,33 @@ import javax.validation.Valid;
 public class PersonController {
     private final PersonService personService;
     private final LoginService loginService;
-    private final ListService listService;
 
-    public PersonController(PersonService personService, LoginService loginService,ListService listService) {
+    public PersonController(PersonService personService, LoginService loginService) {
         this.personService = personService;
         this.loginService = loginService;
-        this.listService = listService;
     }
 
     @PostMapping("/addPerson")
-    public String addPerson(Model model, @Valid @ModelAttribute Person person, @Valid @ModelAttribute Login login) {
-        personService.addPerson(person);
-        login.setPersonFk(person);
-        loginService.addLogin(login);
-        model.addAttribute(login);
+    public String addPerson(Model model, @Valid String username, HttpSession session) {
+        List list = new List();
+        model.addAttribute(list);
+        session.setAttribute("user", username);
+        Login login1 = loginService.getLogin((String) session.getAttribute("user"));
+        model.addAttribute(login1);
         return "home";
     }
 
     @PostMapping("/loginPerson")
-    public String loginPerson(Model model, @Valid @ModelAttribute Login login) {
-        loginService.addLogin(login);
+    public String loginPerson(Model model, @Valid String username, @Valid String password, HttpSession session) {
+        List list = new List();
+        model.addAttribute(list);
+        if(loginService.getLogin(username).getPassword().equals(password)){
+            session.setAttribute("user", username);
+            Login login1 = loginService.getLogin((String) session.getAttribute("user"));
+           model.addAttribute(login1);
+            return "home";
+        }
+        Login login = new Login();
         model.addAttribute(login);
         return "home";
     }

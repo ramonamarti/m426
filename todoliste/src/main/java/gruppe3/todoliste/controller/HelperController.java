@@ -43,14 +43,17 @@ public class HelperController {
         model.addAttribute(login);
         return "home";
     }
+
     @GetMapping("/admin")
     public String addPerson(Model model) {
         Person person = new Person("Admin", "Admin");
+        person = personService.addPerson(person);
         Login login = new Login("admin", "123",person);
-        personService.addPerson(person);
         loginService.addLogin(login);
         List list = new List("2019-11-30","Test",person);
+        List list2 = new List("2019-11-30","Test",person);
         listService.addList(list);
+        listService.addList(list2);
         model.addAttribute(login);
         return "home";
     }
@@ -63,7 +66,7 @@ public class HelperController {
         Login login = loginService.getLogin((String) session.getAttribute("user"));
         List todos = listService.getList(login.getPersonFk().getId());
         model.addAttribute(todos);
-        return "home";
+        return "todoForm";
     }
 
 

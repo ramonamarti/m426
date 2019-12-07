@@ -24,6 +24,7 @@ public class List {
 
     @NotEmpty
     @NotNull
+    @Column(name = "listDate")
     private String date;
 
     @NotEmpty
