@@ -7,8 +7,9 @@ import javax.validation.constraints.NotNull;
 /**
  * Diese Klasse erstellt die Tabelle "person" mit den folgenden Attributen:
  * id
- * vorname
- * nachname
+ * firstname
+ * familyname
+ * and represent the object entity
  * Author: Cristina
  */
 
@@ -26,23 +27,23 @@ public class Person {
      */
     @NotEmpty
     @NotNull
-    private String vorname;
+    private String firstname;
 
     /**
      * Erstellung Attribut nachname
      */
     @NotEmpty
     @NotNull
-    private String nachname;
+    private String familyname;
 
     /**
      * Konstruktor mit folgenden Parameter:
-     * @param vorname
-     * @param nachname
+     * @param fistname
+     * @param familyname
      */
-    public Person(@NotEmpty @NotNull String vorname, @NotEmpty @NotNull String nachname) {
-        this.vorname = vorname;
-        this.nachname = nachname;
+    public Person(@NotEmpty @NotNull String firstname, @NotEmpty @NotNull String familyname) {
+        this.firstname = firstname;
+        this.familyname = familyname;
     }
 
     /**
@@ -63,19 +64,19 @@ public class Person {
         this.id = id;
     }
 
-    public String getVorname() {
-        return vorname;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getNachname() {
-        return nachname;
+    public String getFamilyname() {
+        return familyname;
     }
 
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setFamilyname(String familyname) {
+        this.familyname = familyname;
     }
 }

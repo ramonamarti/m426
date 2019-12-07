@@ -33,10 +33,22 @@ public class PersonController {
     public String addPerson(Model model, @Valid String username, HttpSession session) {
         List list = new List();
         model.addAttribute(list);
-        session.setAttribute("user", username);
-        Login login1 = loginService.getLogin((String) session.getAttribute("user"));
+        Login login1 = new Login();
+        Person person = new Person();
+        model.addAttribute(username);
+        List todos = new List();
+        model.addAttribute(todos);
+        model.addAttribute(list);
+        if(loginService.getLogin(username)==null){
+            session.setAttribute("user", username);
+            login1 = loginService.getLogin((String) session.getAttribute("user"));
+            person = login1.getPersonFk();
+            model.addAttribute(username);
+        } else {
+            return "home";
+        }
         model.addAttribute(login1);
-        return "home";
+        return "todoForm";
     }
 
     @PostMapping("/loginPerson")
@@ -46,10 +58,13 @@ public class PersonController {
         if(loginService.getLogin(username).getPassword().equals(password)){
             session.setAttribute("user", username);
             Login login1 = loginService.getLogin((String) session.getAttribute("user"));
-           model.addAttribute(login1);
-            return "home";
+            model.addAttribute(login1);
+            model.addAttribute(username);
+            return "todoForm";
         }
+        Person person = new Person();
         Login login = new Login();
+        login.setPersonFk(person);
         model.addAttribute(login);
         return "home";
     }
