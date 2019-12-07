@@ -35,6 +35,7 @@ public class PersonController {
         model.addAttribute(list);
         session.setAttribute("user", username);
         Login login1 = loginService.getLogin((String) session.getAttribute("user"));
+//        Person person = personService.getPerson(login1.getPersonFk());
         model.addAttribute(login1);
         return "home";
     }
@@ -49,7 +50,9 @@ public class PersonController {
            model.addAttribute(login1);
             return "home";
         }
+        Person person = new Person();
         Login login = new Login();
+        login.setPersonFk(person);
         model.addAttribute(login);
         return "home";
     }
