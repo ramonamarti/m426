@@ -45,19 +45,19 @@ public class Person {
         this.id = id;
     }
 
-    public String getVorname() {
+    public String getFirstname() {
         return firstname;
     }
 
-    public void setVorname(String firstname) {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
-    public String getNachname() {
+    public String getFamilyname() {
         return familyname;
     }
 
-    public void setNachname(String familyname) {
+    public void setFamilyname(String familyname) {
         this.familyname = familyname;
     }
 }
