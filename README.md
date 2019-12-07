@@ -4,5 +4,5 @@
 Chef -> Ramona Marti <br/>
 Cristina Vantaggiato <br/>
 Carlos Sampaio Peredo <br/>
-Michael Zihlmannn <br/>
+Michael Zihlmann <br/>
 Kevin Meier <br/>
