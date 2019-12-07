@@ -54,6 +54,7 @@ public class HelperController {
         List list2 = new List("2019-11-30","Test",person);
         listService.addList(list);
         listService.addList(list2);
+        model.addAttribute("todos", listService.getAllList());
         model.addAttribute(login);
         return "home";
     }
