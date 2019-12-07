@@ -31,7 +31,7 @@ public class ListController {
     public String todo(@ModelAttribute List todo, Model model) {
 
         listService.addList(todo);
-        model.addAttribute("list", new List());
+        model.addAttribute("todo", new List());
 
         return "redirect:/home";
 
@@ -84,7 +84,7 @@ public class ListController {
      * @param id todo welche aktualisiert werden soll
      * @return todoForm wird angezeigt
      */
-    @GetMapping(value = "/update", params ={"id"})
+    @PostMapping(value = "/update", params ={"id"})
     public String update (@RequestParam(name ="id")Long id, Model model){
 
         listService.editList(id);
