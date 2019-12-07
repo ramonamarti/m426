@@ -60,4 +60,13 @@ public class ListService {
         List list = getList(id) ;
         listRepository.delete(list);
     }
+
+    /**
+     *
+     * @param id welche todo gelöscht werden soll
+     */
+    public void editList(Long id){
+        List list = getList(id) ;
+        listRepository.save(list);
+    }
 }
