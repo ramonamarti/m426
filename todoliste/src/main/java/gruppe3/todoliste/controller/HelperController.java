@@ -38,11 +38,25 @@ public class HelperController {
     @GetMapping
     public String showLogin(Model model) {
         Person person = new Person();
-        List todo = new List();
+        List list = new List();
         Login login = new Login();
         login.setPersonFk(person);
         model.addAttribute(login);
-        model.addAttribute(todo);
+        java.util.List<List> todos = listService.getAllList();
+        model.addAttribute(todos);
+        return "home";
+    }
+
+     @GetMapping("/logout")
+    public String showLogout(Model model, HttpSession session) {
+        session.removeAttribute("user");
+        Person person = new Person();
+        List list = new List();
+        Login login = new Login();
+        login.setPersonFk(person);
+        model.addAttribute(login);
+        java.util.List<List> todos = listService.getAllList();
+        model.addAttribute(todos);
         return "home";
     }
 
@@ -53,16 +67,15 @@ public class HelperController {
             person = personService.addPerson(person);
             Login login = new Login("admin", "123",person);
             loginService.addLogin(login);
-            List todos = new List("2019-11-30","Test",person);
             List list = new List("2019-11-30","Test",person);
-            listService.addList(todos);
             listService.addList(list);
             model.addAttribute(login);
+            java.util.List<List> todos = listService.getAllList();
             model.addAttribute(todos);
         } else {
             Login login = loginService.getLogin("admin");
             Person person = login.getPersonFk();
-            List todos = new List();
+            java.util.List<List> todos = listService.getAllList();
             List list = new List();
             model.addAttribute(login);
             model.addAttribute(todos);
