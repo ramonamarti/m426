@@ -6,31 +6,27 @@
 </head>
 <body>
 
-<p th:if="${username == null}">Du muss eingeloggt sein</p>
+<p th:if="${username == null}" th:text="test">
+    Du muss eingeloggt sein
+</p>
 
-<div th:if="${username}" class="container">
-
+<div th:if="${username != null}" th:text="test2" class="container">
     <p>Du bist eingeloggt</p>
-
 </div>
 
-    <hr>
+<hr>
 
+<fieldset>
+    <form method="post" th:action="@{/todo/add}" th:object="${list}">
+        <h3>Neue </h3>
+        <p>Beschreibung <input type="text" th:field="*{description}"/></p>
+        <p>Date <input type="text" th:field="*{date}"/></p>
+        <p>Person ID<input type="text" th:field="*{personFk}"/></p>
 
-
-    <fieldset>
-        <form method="post" th:action="@{/todo/add}" th:object="${list}">
-            <h3>Neue </h3>
-         <p>Beschreibung <input type="text" th:field="*{description}" /></p>
-            <p>Date <input type="text" th:field="*{date}" /></p>
-            <p>Person ID<input type="text" th:field="*{personFk}" /></p>
-
-            <p><input type="submit" value="Senden" /> <input type="reset" value="Reset" /></p>
-        </form>
-    </fieldset>
-    <hr>
-
-
+        <p><input type="submit" value="Senden"/> <input type="reset" value="Reset"/></p>
+    </form>
+</fieldset>
+<hr>
 
 </body>
 </html>
