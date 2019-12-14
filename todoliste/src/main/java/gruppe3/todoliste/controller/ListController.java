@@ -2,7 +2,6 @@ package gruppe3.todoliste.controller;
 
 import gruppe3.todoliste.model.List;
 import gruppe3.todoliste.service.ListService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,26 +12,28 @@ import javax.validation.Valid;
 
 /**
  * controller to manage the pages of the category admin and all general pages like home, password check, login and out
+ * @Author: Carlos Sampaio Peredo  // -- Refactoring Michael: add author
  */
 @Controller
 @RequestMapping("/todo")
 public class ListController {
 
-    private final ListService listService;
+    // CONSTANT LIST_SERVICE provides a service to add a module, get a module with its id or remove a module -- Refactoring Michael: add comment
+    private final ListService LIST_SERVICE; // -- Refactoring Michael: rename to LIST_SERVICE
 
     public ListController(ListService listService) {
-        this.listService = listService;
+        this.LIST_SERVICE = listService;
     }
 
     /**
-     * @param todo  Todo welche hinzugefügt wird
+     * @param todo entry to add  -- Refactoring Michael: comment in englisch
      * @param model spring framework model
-     * @return todoForm wird aktualisiert
+     * @return updated todoForm  -- Refactoring Michael: comment in englisch
      */
     @PostMapping("/add")
     public String todo(@Valid @ModelAttribute List todo, Model model) {
 
-        listService.addList(todo);
+        LIST_SERVICE.addList(todo);
         model.addAttribute("list", todo);
 
         return "home";
@@ -41,7 +42,7 @@ public class ListController {
 
     /**
      * @param model spring framework model
-     * @return todoForm wird angezeigt
+     * @return todoForm is displayed  -- Refactoring Michael: comment in englisch
      */
     @GetMapping("/todoform")
     public String showForm(Model model, HttpSession session) {
@@ -59,39 +60,39 @@ public class ListController {
 
     /**
      * @param model spring framework model
-     * @param id    todo welche gelöscht werden soll
-     * @return home wird angezeigt
+     * @param id    todo which should be deleted  -- Refactoring Michael: comment in englisch
+     * @return home is displayed  -- Refactoring Michael: comment in englisch
      */
     @GetMapping(value = "/delete", params = {"id"})
     public String delete(@RequestParam(name = "id") Long id, Model model) {
-        listService.deleteList(id);
-        model.addAttribute("todos", listService.getAllList());
+        LIST_SERVICE.deleteList(id);
+        model.addAttribute("todos", LIST_SERVICE.getAllList());
         return "home";
     }
 
     /**
      * @param model spring framework model
-     * @param id    todo welche bearbeitet werden soll
-     * @return todoForm wird angezeigt
+     * @param id    todo which should be processed  -- Refactoring Michael: comment in englisch
+     * @return todoForm is displayed  -- Refactoring Michael: comment in englisch
      */
     @GetMapping(value = "/edit", params = {"id"})
     public String edit(@RequestParam(name = "id") Long id, Model model) {
         String username = "";
         model.addAttribute(username);
 
-        model.addAttribute("todos", listService.getList(id));
+        model.addAttribute("todos", LIST_SERVICE.getList(id));
         return "todoForm";
     }
 
     /**
      * @param model spring framework model
-     * @param id    todo welche aktualisiert werden soll
-     * @return todoForm wird angezeigt
+     * @param id    todo which should be updated  -- Refactoring Michael: comment in englisch
+     * @return todoForm is displayed  -- Refactoring Michael: comment in englisch
      */
     @GetMapping(value = "/update", params = {"id"})
     public String update(@RequestParam(name = "id") Long id, Model model) {
 
-        listService.editList(id);
+        LIST_SERVICE.editList(id);
         return "home";
     }
 
