@@ -23,6 +23,7 @@ public class List {
 
     /**
      * Erstellung Attribut date
+     * Refactoring Ramona: changed column name from date to listDate in DB
      */
     @NotEmpty
     @NotNull
@@ -38,6 +39,8 @@ public class List {
 
     /**
      * Erstellung Fremdschlüssel personFK
+     * Refactoring Ramona: changed column name from listPerson_Fk to listPersonFk
+     * Refactoring Ramona: removed notempty an notnull
      */
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "listPersonFk")
