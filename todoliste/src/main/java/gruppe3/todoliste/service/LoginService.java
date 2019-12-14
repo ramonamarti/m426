@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 /***
- * service to add a student, get a student with its login name, get a student with its id or remove a student
+ * service to add a login, get a login with its login name, get a login with its id or remove a login
  */
 @Service
 public class LoginService {
@@ -20,17 +20,17 @@ public class LoginService {
     }
 
     /**
-     * to add and save a student in the table student
-     * @param l : student to save
+     * to add and save a login in the table login
+     * @param l : login to save
      */
     public void addLogin(@Valid Login l){
         loginRepository.saveAndFlush(l);
     }
 
     /**
-     * to get a student form the table student with an id
-     * @param id: id of a student
-     * @return student with the correct id name from the table student
+     * to get a login form the table login with an id
+     * @param id: id of a login
+     * @return login with the correct id name from the table login
      */
     public Login getLogin(Long id){
         Login login = new Login();
@@ -43,9 +43,17 @@ public class LoginService {
     }
 
     /**
-     * to get a student form the table student with a username
-     * @param username: id of a student
-     * @return student with the correct id name from the table student
+     * to get all Logins from the table login
+     * @return all with the correct id name from the table login
+     */
+    public java.util.List<Login> getAllLogins(){
+        return loginRepository.findAll();
+    }
+
+    /**
+     * to get a login from the table login with a username
+     * @param username: id of a login
+     * @return login with the correct id name from the table login
      */
     public Login getLogin(String username){
         Login login = new Login();
@@ -58,8 +66,8 @@ public class LoginService {
     }
 
     /**
-     * to delete a student from the table student
-     * @param id: id of a student
+     * to delete a login from the table login
+     * @param id: id of a login
      */
     public void removeLogin(Long id){
         if(id != null){
@@ -71,8 +79,8 @@ public class LoginService {
     }
 
     /**
-     * to get a login of all students from the table student
-     * @return login of all students of the table student
+     * to get a login of all logins from the table login
+     * @return login of all logins of the table login
      */
     // not used jet
     public List<Login> findPerson(){

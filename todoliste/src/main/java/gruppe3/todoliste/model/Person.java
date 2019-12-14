@@ -9,12 +9,10 @@ import javax.validation.constraints.NotNull;
  * id
  * firstname
  * familyname
- * and represent the object entity
  * Author: Cristina
  */
 
 @Entity(name = "person")
-@Table(name = "person")
 public class Person {
 
     @Id
@@ -23,22 +21,23 @@ public class Person {
     private Long id;
 
     /**
-     * Erstellung Attribut vorname
+     * Erstellung Attribut firstname
      */
     @NotEmpty
     @NotNull
     private String firstname;
 
     /**
-     * Erstellung Attribut nachname
+     * Erstellung Attribut familyname
      */
     @NotEmpty
     @NotNull
     private String familyname;
 
+
     /**
      * Konstruktor mit folgenden Parameter:
-     * @param fistname
+     * @param firstname
      * @param familyname
      */
     public Person(@NotEmpty @NotNull String firstname, @NotEmpty @NotNull String familyname) {

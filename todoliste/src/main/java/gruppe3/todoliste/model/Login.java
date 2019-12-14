@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
  * Author: Cristina
  */
 @Entity(name = "login")
-@Table(name = "login")
 public class Login {
 
     @Id
@@ -40,7 +39,6 @@ public class Login {
     /**
      * Erstellung Frendschlüssel personFk
      */
-
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "loginPersonFk")
     private Person personFk;
