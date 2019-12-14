@@ -23,6 +23,7 @@ public class Login {
 
     /**
      * Erstellung Attribut username
+     * Refactoring Ramona: changed to unique column
      */
     @NotEmpty
     @NotNull
@@ -38,6 +39,8 @@ public class Login {
 
     /**
      * Erstellung Frendschlüssel personFk
+     * Refactoring Ramona: changed column name from loginPerson_Fk to loginPersonFk
+     * Refactoring Ramona: removed notempty an notnull
      */
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "loginPersonFk")

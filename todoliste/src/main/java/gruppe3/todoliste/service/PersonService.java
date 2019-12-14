@@ -27,21 +27,6 @@ public class PersonService {
         return personRepository.saveAndFlush(p);
     }
 
-//    /**
-//     * to get a student form the table student with a login name
-//     * @param login: login of a student
-//     * @return student with the correct login name from the table student
-//     */
-//    public Person getPerson(String login){
-//        Person person = new Person();
-//        if(login != null){
-//            Optional<Person> optionalStudent = personRepository.findByLogin(login);
-//            if(optionalStudent.isPresent())
-//                person = optionalStudent.get();
-//        }
-//        return person;
-//    }
-
     /**
      * to get a student form the table student with an id
      * @param id: id of a student
@@ -74,7 +59,6 @@ public class PersonService {
      * to get a list of all students from the table student
      * @return list of all students of the table student
      */
-    // not used jet
     public List<Person> findPerson(){
 
         return personRepository.findAll();

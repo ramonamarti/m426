@@ -22,6 +22,7 @@ public class Person {
 
     /**
      * Erstellung Attribut firstname
+     * Refactoring Ramona: changed vorname to firstname as well as getter and setter
      */
     @NotEmpty
     @NotNull
@@ -29,6 +30,7 @@ public class Person {
 
     /**
      * Erstellung Attribut familyname
+     * Refactoring Ramona: changed nachname to familyname as well as getter and setter
      */
     @NotEmpty
     @NotNull
