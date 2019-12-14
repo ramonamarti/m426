@@ -23,39 +23,39 @@ import javax.validation.Valid;
 public class PersonController {
     private final PersonService personService;
     private final LoginService loginService;
+    private final ListService listService;
 
-    public PersonController(PersonService personService, LoginService loginService) {
+    public PersonController(PersonService personService, LoginService loginService, ListService listService) {
         this.personService = personService;
         this.loginService = loginService;
+        this.listService = listService;
     }
 
     @PostMapping("/addPerson")
-    public String addPerson(Model model, @Valid String username, HttpSession session) {
+    public String addPerson(Model model, @Valid String username, @Valid  @ModelAttribute Login login, HttpSession session) {
         List list = new List();
         model.addAttribute(list);
-        Login login1 = new Login();
-        Person person = new Person();
         model.addAttribute(username);
-        List todos = new List();
-        model.addAttribute(todos);
-        model.addAttribute(list);
-        if(loginService.getLogin(username)==null){
+        if (loginService.getLogin(username).getUsername() == null || loginService.getLogin(username).getUsername().equals("")) {
+            Person person = login.getPersonFk();
+            personService.addPerson(person);
+            loginService.addLogin(login);
             session.setAttribute("user", username);
-            login1 = loginService.getLogin((String) session.getAttribute("user"));
-            person = login1.getPersonFk();
             model.addAttribute(username);
+            model.addAttribute(login);
+            return "todoForm";
         } else {
+            java.util.List<List> todos = listService.getAllList();
+            model.addAttribute(todos);
             return "home";
         }
-        model.addAttribute(login1);
-        return "todoForm";
     }
 
     @PostMapping("/loginPerson")
     public String loginPerson(Model model, @Valid String username, @Valid String password, HttpSession session) {
         List list = new List();
         model.addAttribute(list);
-        if(loginService.getLogin(username).getPassword().equals(password)){
+        if (loginService.getLogin(username).getPassword().equals(password)) {
             session.setAttribute("user", username);
             Login login1 = loginService.getLogin((String) session.getAttribute("user"));
             model.addAttribute(login1);
@@ -65,7 +65,9 @@ public class PersonController {
         Person person = new Person();
         Login login = new Login();
         login.setPersonFk(person);
+        java.util.List<List> todos = listService.getAllList();
         model.addAttribute(login);
+        model.addAttribute(todos);
         return "home";
     }
 
